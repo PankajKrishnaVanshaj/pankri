@@ -9,9 +9,9 @@ const Navbar = () => {
           width={100}
           height={100}
           alt="Pankri Logo"
-          className="h-16 w-16 mr-3 rounded-full shadow-sm shadow-primary"
+          className="h-16 w-16 mr-3 rounded-full shadow-sm shadow-primary hover:shadow-none hover:scale-150 duration-300"
         />
-        <span className="text-gray-900 font-semibold text-[1rem] sm:text-[1.25rem] md:text-[1.5rem] lg:text-[2rem]">
+        <span className="text-gray-900 font-bold text-[1rem] sm:text-[1.25rem] md:text-[1.5rem] lg:text-[2rem]">
           PanKri
         </span>
         {/* Make the name bold and a bit darker */}

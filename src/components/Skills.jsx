@@ -23,11 +23,11 @@ const dummySkills = [
     svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
     title: "TypeScript",
   },
-  {
-    _id: "7",
-    svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    title: "Python",
-  },
+  // {
+  //   _id: "7",
+  //   svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  //   title: "Python",
+  // },
   {
     _id: "2",
     svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -38,11 +38,11 @@ const dummySkills = [
     svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
     title: "Next.js",
   },
-  {
-    _id: "13",
-    svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", // Same icon used for React Native
-    title: "React Native",
-  },
+  // {
+  //   _id: "13",
+  //   svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", // Same icon used for React Native
+  //   title: "React Native",
+  // },
   {
     _id: "3",
     svg: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { CameraIcon } from "lucide-react";
+import { CameraIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -192,15 +192,15 @@ const MyApps = () => {
 
       {/* Pagination Controls */}
       <div className="flex justify-center mt-4">
-        <button
+        {/* <button
           className={`px-4 py-2 mx-1 rounded-lg ${
             currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
           }`}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Previous
-        </button>
+          <ChevronLeft />
+        </button> */}
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
@@ -214,15 +214,15 @@ const MyApps = () => {
             {index + 1}
           </button>
         ))}
-        <button
+        {/* <button
           className={`px-4 py-2 mx-1 rounded-lg ${
             currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
           }`}
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next
-        </button>
+          <ChevronRight />
+        </button> */}
       </div>
     </div>
   );

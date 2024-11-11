@@ -33,16 +33,16 @@ const dummyApps = [
     description:
       "PK ChaSpo is an AI-driven website offering over 50 customizable templates. It combines TypeScript and Next.js for a dynamic user experience, with Tailwind CSS for sleek design and MongoDB for efficient data management.",
   },
-  // {
-  //   _id: "3",
-  //   url: "https://toolscloud.pankri.com/",
-  //   svg: "/toolscloud.png",
-  //   name: "PK ToolsCloud",
-  //   category: "Tools",
-  //   stack: ["TypeScript", "Next.js", "Tailwind CSS"],
-  //   description:
-  //     "PK ToolsCloud is a versatile file conversion website that supports a range of formats. Built with TypeScript and Next.js for robust functionality and Tailwind CSS for a modern, responsive design, it provides a seamless user experience for converting files efficiently.",
-  // },
+  {
+    _id: "3",
+    url: "https://toolscloud.pankri.com/",
+    svg: "/toolscloud.png",
+    name: "PK ToolsCloud",
+    category: "Tools",
+    stack: ["TypeScript", "Next.js", "Tailwind CSS"],
+    description:
+      "PK ToolsCloud is a versatile file conversion website that supports a range of formats. Built with TypeScript and Next.js for robust functionality and Tailwind CSS for a modern, responsive design, it provides a seamless user experience for converting files efficiently.",
+  },
   {
     _id: "4",
     url: "https://skillgrow.pankri.com/",
@@ -84,7 +84,7 @@ const dummyApps = [
   {
     _id: "7",
     url: "https://facefeed.pankri.com/",
-    svg: "/facefeed.png", // Replace with actual image path
+    svg: "/facefeed.png",
     name: "PK Facefeed",
     category: "Social Media",
     stack: ["JavaScript", "React", "Express.js", "MongoDB", "Tailwind CSS"],

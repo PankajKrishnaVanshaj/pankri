@@ -33,16 +33,16 @@ const dummyApps = [
     description:
       "PK ChaSpo is an AI-driven website offering over 50 customizable templates. It combines TypeScript and Next.js for a dynamic user experience, with Tailwind CSS for sleek design and MongoDB for efficient data management.",
   },
-  {
-    _id: "3",
-    url: "https://toolscloud.pankri.com/",
-    svg: "/toolscloud.png",
-    name: "PK ToolsCloud",
-    category: "Tools",
-    stack: ["TypeScript", "Next.js", "Tailwind CSS"],
-    description:
-      "PK ToolsCloud is a versatile file conversion website that supports a range of formats. Built with TypeScript and Next.js for robust functionality and Tailwind CSS for a modern, responsive design, it provides a seamless user experience for converting files efficiently.",
-  },
+  // {
+  //   _id: "3",
+  //   url: "https://toolscloud.pankri.com/",
+  //   svg: "/toolscloud.png",
+  //   name: "PK ToolsCloud",
+  //   category: "Tools",
+  //   stack: ["TypeScript", "Next.js", "Tailwind CSS"],
+  //   description:
+  //     "PK ToolsCloud is a versatile file conversion website that supports a range of formats. Built with TypeScript and Next.js for robust functionality and Tailwind CSS for a modern, responsive design, it provides a seamless user experience for converting files efficiently.",
+  // },
   {
     _id: "4",
     url: "https://skillgrow.pankri.com/",
@@ -53,16 +53,16 @@ const dummyApps = [
     description:
       "PK SkillGrow is an AI-powered tool designed to generate MCQ quizzes and video courses, complete with MCQ summaries. Leveraging JavaScript and Next.js for dynamic functionality, Tailwind CSS for an intuitive interface, and MongoDB for robust data storage, it delivers a comprehensive learning experience.",
   },
-  {
-    _id: "5",
-    url: "https://jobhive.pankri.com/",
-    svg: "/jobhive.png",
-    name: "PK JobHive",
-    category: "AI",
-    stack: ["JavaScript", "Next.js", "Tailwind CSS", "MongoDB", "Gemini"],
-    description:
-      "PK JobHive is an AI-driven tool designed for job preparation and resume building. It provides personalized resume crafting and job application support using advanced AI algorithms. Built with JavaScript and Next.js for dynamic capabilities, Tailwind CSS for a modern interface, and MongoDB for efficient data management, it aims to streamline the job search process.",
-  },
+  // {
+  //   _id: "5",
+  //   url: "https://jobhive.pankri.com/",
+  //   svg: "/jobhive.png",
+  //   name: "PK JobHive",
+  //   category: "AI",
+  //   stack: ["JavaScript", "Next.js", "Tailwind CSS", "MongoDB", "Gemini"],
+  //   description:
+  //     "PK JobHive is an AI-driven tool designed for job preparation and resume building. It provides personalized resume crafting and job application support using advanced AI algorithms. Built with JavaScript and Next.js for dynamic capabilities, Tailwind CSS for a modern interface, and MongoDB for efficient data management, it aims to streamline the job search process.",
+  // },
   {
     _id: "6",
     url: "https://digmark.pankri.com/",

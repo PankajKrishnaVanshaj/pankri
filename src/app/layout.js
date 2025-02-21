@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-import Script from "next/script";
+import Head from "next/head";
 
 export const metadata = {
   title: "PanKri",
@@ -10,12 +10,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <meta name="google-adsense-account" content="ca-pub-2178056161997357" />
+      </Head>
       <body className="mx-3 md:mx-16 lg:mx-32 my-2">
-        <Script
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
           crossorigin="anonymous"
-        ></Script>
+        ></script>
         <Navbar />
         {children}
       </body>

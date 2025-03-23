@@ -72,11 +72,7 @@ const dummySkills = [
 
 const Skills = () => {
   return (
-<<<<<<< HEAD
-    <div className="p-6 rounded-lg shadow-md shadow-primary w-full" id="skills">
-=======
     <div className="p-6 rounded-lg shadow-md shadow-primary w-full" >
->>>>>>> e0f600f (blogs add)
       <div className="">
         <div className="flex items-center justify-center text-2xl md:text-3xl font-extrabold text-gray-800">
           <hr className="flex-grow border-t border-gray-300" />

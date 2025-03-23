@@ -1,3 +1,4 @@
+"use client"
 import About from "@/components/About";
 import BlogCard from "@/components/BlogCard";
 import MyApps from "@/components/MyApps";

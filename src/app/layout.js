@@ -1,10 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Head from "next/head";
-<<<<<<< HEAD
-=======
 import Footer from "@/components/Footer";
->>>>>>> e0f600f (blogs add)
 
 export const metadata = {
   title: "PanKri",
@@ -25,10 +22,7 @@ export default function RootLayout({ children }) {
         ></script>
         <Navbar />
         {children}
-<<<<<<< HEAD
-=======
         <Footer/>
->>>>>>> e0f600f (blogs add)
       </body>
     </html>
   );

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { CameraIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-<<<<<<< HEAD
 
 const dummyApps = [
   {
@@ -54,20 +53,10 @@ const dummyApps = [
     description:
       "PK SkillGrow is an AI-powered tool designed to generate MCQ quizzes and video courses, complete with MCQ summaries. Leveraging JavaScript and Next.js for dynamic functionality, Tailwind CSS for an intuitive interface, and MongoDB for robust data storage, it delivers a comprehensive learning experience.",
   },
-  // {
-  //   _id: "5",
-  //   url: "https://jobhive.pankri.com/",
-  //   svg: "/jobhive.png",
-  //   name: "PK JobHive",
-  //   category: "AI",
-  //   stack: ["JavaScript", "Next.js", "Tailwind CSS", "MongoDB", "Gemini"],
-  //   description:
-  //     "PK JobHive is an AI-driven tool designed for job preparation and resume building. It provides personalized resume crafting and job application support using advanced AI algorithms. Built with JavaScript and Next.js for dynamic capabilities, Tailwind CSS for a modern interface, and MongoDB for efficient data management, it aims to streamline the job search process.",
-  // },
   {
     _id: "6",
     url: "https://digmark.pankri.com/",
-    svg: "/digmark.png", // Replace with actual image path
+    svg: "/digmark.png",
     name: "PK DigMark",
     category: "Marketplace",
     stack: [
@@ -93,10 +82,6 @@ const dummyApps = [
       "PK Facefeed is a social media platform that allows users to connect with random users, chat with them, and share photos, media, and stories, creating a unique social experience.",
   },
 ];
-=======
-import { projects } from "./Projects";
-
->>>>>>> e0f600f (blogs add)
 
 const itemsPerPage = 1; // Number of items per page
 
@@ -104,17 +89,10 @@ const MyApps = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate total number of pages
-<<<<<<< HEAD
   const totalPages = Math.ceil(dummyApps.length / itemsPerPage);
 
   // Get current items to display
   const currentItems = dummyApps.slice(
-=======
-  const totalPages = Math.ceil(projects.length / itemsPerPage);
-
-  // Get current items to display
-  const currentItems = projects.slice(
->>>>>>> e0f600f (blogs add)
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -130,14 +108,7 @@ const MyApps = () => {
   };
 
   return (
-    <div
-      className="p-6 rounded-lg shadow-md shadow-primary w-full"
-<<<<<<< HEAD
-      id="projects"
-=======
-      
->>>>>>> e0f600f (blogs add)
-    >
+    <div className="p-6 rounded-lg shadow-md shadow-primary w-full">
       <div>
         <div className="flex items-center justify-center text-2xl md:text-3xl font-extrabold text-gray-800">
           <hr className="flex-grow border-t border-gray-300" />
@@ -156,7 +127,7 @@ const MyApps = () => {
             {/* img title cat section */}
             <div className="flex justify-between items-center">
               <div className="mr-4">
-                <div className="text-md md:text-xl lg:text-2xl font-bold ">
+                <div className="text-md md:text-xl lg:text-2xl font-bold">
                   <Link href={app.url}>{truncateText(app.name, 50)}</Link>
                 </div>
                 <p className="gap-2 rounded-full shadow-sm shadow-primary py-1 px-4 w-fit text-xs md:text-sm lg:text-base my-3">
@@ -208,15 +179,6 @@ const MyApps = () => {
 
       {/* Pagination Controls */}
       <div className="flex justify-center mt-4">
-        {/* <button
-          className={`px-4 py-2 mx-1 rounded-lg ${
-            currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
-          }`}
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <ChevronLeft />
-        </button> */}
         {[...Array(totalPages)].map((_, index) => (
           <button
             key={index}
@@ -230,15 +192,6 @@ const MyApps = () => {
             {index + 1}
           </button>
         ))}
-        {/* <button
-          className={`px-4 py-2 mx-1 rounded-lg ${
-            currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
-          }`}
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <ChevronRight />
-        </button> */}
       </div>
     </div>
   );

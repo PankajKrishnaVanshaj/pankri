@@ -1,4 +1,3 @@
-"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +12,7 @@ import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import ShareButton from "./ShareButton";
 
-const About = () => {
+const AboutComponent = () => {
   return (
     <div>
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start">
@@ -125,4 +124,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutComponent;

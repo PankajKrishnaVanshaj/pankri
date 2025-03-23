@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { CameraIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+<<<<<<< HEAD
 
 const dummyApps = [
   {
@@ -92,6 +93,10 @@ const dummyApps = [
       "PK Facefeed is a social media platform that allows users to connect with random users, chat with them, and share photos, media, and stories, creating a unique social experience.",
   },
 ];
+=======
+import { projects } from "./Projects";
+
+>>>>>>> e0f600f (blogs add)
 
 const itemsPerPage = 1; // Number of items per page
 
@@ -99,10 +104,17 @@ const MyApps = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate total number of pages
+<<<<<<< HEAD
   const totalPages = Math.ceil(dummyApps.length / itemsPerPage);
 
   // Get current items to display
   const currentItems = dummyApps.slice(
+=======
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
+
+  // Get current items to display
+  const currentItems = projects.slice(
+>>>>>>> e0f600f (blogs add)
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -120,7 +132,11 @@ const MyApps = () => {
   return (
     <div
       className="p-6 rounded-lg shadow-md shadow-primary w-full"
+<<<<<<< HEAD
       id="projects"
+=======
+      
+>>>>>>> e0f600f (blogs add)
     >
       <div>
         <div className="flex items-center justify-center text-2xl md:text-3xl font-extrabold text-gray-800">

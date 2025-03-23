@@ -18,6 +18,15 @@ const Navbar = () => {
       </div>
       <nav className="flex space-x-4">
         <a
+<<<<<<< HEAD
+=======
+          href="#Blogs"
+          className="relative group inline-block text-gray-800 p-2 rounded-lg transition duration-300 ease-in-out transform hover:bg-blue-200 hover:text-blue-600 text-[0.9rem] sm:text-[1rem] md:text-[1.25rem]"
+        >
+          Blogs
+        </a>
+        <a
+>>>>>>> e0f600f (blogs add)
           href="#skills"
           className="relative group inline-block text-gray-800 p-2 rounded-lg transition duration-300 ease-in-out transform hover:bg-blue-200 hover:text-blue-600 text-[0.9rem] sm:text-[1rem] md:text-[1.25rem]"
         >

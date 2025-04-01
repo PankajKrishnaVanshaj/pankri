@@ -2,7 +2,10 @@
 import About from "@/components/About";
 import BlogCard from "@/components/BlogCard";
 import MyApps from "@/components/MyApps";
+import { BlogPosts } from "@/components/ProjectsReview";
 import Skills from "@/components/Skills";
+import Link from "next/link";
+
 
 export default function Home() {
   return (
@@ -39,8 +42,10 @@ export default function Home() {
           <hr className="flex-grow border-t border-gray-300" />
         </div>
         <div className="mt-10 space-y-10 md:space-y-0 md:space-x-5" >
-          <BlogCard /></div>
+          <BlogCard blogPosts={BlogPosts}/>
+          </div>
       </div>
+      <Link href={'/tech-reviews'} className="flex justify-end text-primary">Read More... </Link>
     </div>
   );
 }

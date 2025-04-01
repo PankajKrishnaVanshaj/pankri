@@ -1,49 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const BlogCard = () => {
-  const BlogPosts = [
-    {
-      title: "PK Blogify",
-      imageUrl: "/blogify.png",
-      slug: "/blogify",
-      description: "A social media platform blending blogging with networking for creators.",
-    },
-    {
-      title: "PK Facefeed",
-      imageUrl: "/facefeed.png",
-      slug: "/facefeed",
-      description: "Connect with random users, chat, and share media in a unique social space.",
-    },
-    {
-      title: "PK DigMark",
-      imageUrl: "/digmark.png",
-      slug: "/digmark",
-      description: "A digital marketing toolset for boosting online presence and analytics.",
-    },
-    {
-      title: "PK ToolsCloud",
-      imageUrl: "/toolscloud.png",
-      slug: "/toolscloud",
-      description: "A cloud-based suite of productivity tools for teams and individuals.",
-    },
-    {
-      title: "PK ChaSpo",
-      imageUrl: "/chaspo.png",
-      slug: "/chaspo",
-      description: "An AI content generator for instant fan posts and summaries.",
-    },
-    {
-      title: "PK SkillGrow",
-      imageUrl: "/skillgrow.png",
-      slug: "/skillgrow",
-      description: "An e-learning platform to grow skills with interactive courses.",
-    },
-  ];
-
+const BlogCard = ({ blogPosts }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6 md:p-8 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg">
-      {BlogPosts.map((post) => (
+      {blogPosts.map((post) => (
         <div
           key={post.slug}
           className="w-full max-w-sm mx-auto bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-2 border border-gray-200"

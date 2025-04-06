@@ -15,11 +15,8 @@ export default function RootLayout({ children }) {
         <meta name="google-adsense-account" content="ca-pub-2178056161997357" />
       </Head>
       <body className="mx-3 md:mx-16 lg:mx-32 my-2">
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
-          crossorigin="anonymous"
-        ></script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3026350025047312"
+     crossorigin="anonymous"></script>
         <Navbar />
         {children}
         <Footer/>

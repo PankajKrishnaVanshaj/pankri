@@ -1,5 +1,4 @@
 export const BlogPosts = [
- 
   {
     title: "Mastering HTML5",
     imageUrl: "/html.png",
@@ -18,5 +17,22 @@ export const BlogPosts = [
     slug: "/javascript",
     description: "Master modern JavaScript with arrow functions, destructuring, and more.",
   },
-  
+  {
+    title: "React.js: Building Dynamic UIs",
+    imageUrl: "/reactjs.png",
+    slug: "/react-js",
+    description: "Dive into React.js components, hooks, and state management for interactive apps.",
+  },
+  {
+    title: "Tailwind CSS: Utility-First Styling",
+    imageUrl: "/tailwindcss.png",
+    slug: "/tailwind-css",
+    description: "Master Tailwind CSS for rapid, customizable, and responsive designs.",
+  },
+  {
+    title: "TypeScript: Typing the Web",
+    imageUrl: "/typescript.png",
+    slug: "/typescript",
+    description: "Explore TypeScript’s static typing and tools for scalable JavaScript development.",
+  },
 ];

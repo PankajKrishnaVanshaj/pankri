@@ -2,7 +2,7 @@
 import About from "@/components/About";
 import BlogCard from "@/components/BlogCard";
 import MyApps from "@/components/MyApps";
-import { BlogPosts } from "@/components/ProjectsReview";
+import { BlogPosts } from "@/components/TechReview";
 import Skills from "@/components/Skills";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ export default function Home() {
       </div>
 
       {/* My Skills & Projects section */}
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <div className="flex items-center justify-center text-2xl md:text-3xl font-extrabold text-gray-800">
           <hr className="flex-grow border-t border-gray-300" />
           <span className="mx-4 px-2 bg-white rounded-lg tracking-[2px]">
@@ -31,7 +31,7 @@ export default function Home() {
             <MyApps />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-10" id="Blogs">
         <div className="flex items-center justify-center text-2xl md:text-3xl font-extrabold text-gray-800 ">

@@ -1,71 +1,120 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 export default function About() {
   return (
-    <div className="bg-white shadow-primary shadow-md rounded-lg p-6 md:p-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">About PanKri</h1>
-      
-      <section className="space-y-6 text-gray-700">
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Our Mission</h2>
-          <p className="text-sm">
-            PanKri is dedicated to empowering digital innovation by providing a universe of websites and apps, connecting users and creators in Mainpuri, Uttar Pradesh, and beyond. Our mission is to deliver accessible, high-quality digital tools and resources that inspire creativity, enhance productivity, and foster community engagement in an ever-evolving digital landscape.
-          </p>
+    <>
+      <Head>
+        <title>About PanKri - Tech Blog on JavaScript, React, Node.js</title>
+        <meta
+          name="description"
+          content="Learn about PanKri, a Mainpuri-based tech blog by Pankaj KrishnaVanshaj, offering tutorials on JavaScript, CSS, HTML, React.js, Node.js, MongoDB, and more."
+        />
+        <meta name="robots" content="index, follow" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'PanKri',
+              url: 'https://www.pankri.com',
+              founder: {
+                '@type': 'Person',
+                name: 'Pankaj KrishnaVanshaj',
+              },
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Mainpuri',
+                addressRegion: 'Uttar Pradesh',
+                addressCountry: 'India',
+              },
+              description: 'A tech blog offering tutorials on JavaScript, React.js, Node.js, MongoDB, and more.',
+            }),
+          }}
+        />
+      </Head>
+      <div className="bg-white shadow-primary shadow-md rounded-lg p-6 md:p-8">
+        
+
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">About PanKri</h1>
+
+        <section className="space-y-6 text-gray-700">
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Our Mission</h2>
+            <p className="text-sm">
+              PanKri is dedicated to empowering developers through a tech blog and platform offering tutorials, tools, and resources on JavaScript, CSS, HTML, React.js, Node.js, MongoDB, and Express.js. Based in Mainpuri, Uttar Pradesh, we connect local talent with global audiences, fostering creativity and technical excellence.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Who We Are</h2>
+            <p className="text-sm">
+              PanKri, founded by Pankaj KrishnaVanshaj in Mainpuri, India, is a hub for tech enthusiasts. Our blog delivers in-depth tutorials and projects, from building React.js apps to setting up MongoDB databases. Our team of developers and writers is passionate about making technology accessible and engaging.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Meet Our Founder: Pankaj KrishnaVanshaj</h2>
+            <p className="text-sm">
+              Pankaj KrishnaVanshaj (PK) is a software engineering student at CSJM University, Kanpur, and a skilled freelance developer. With expertise in web and app development, he founded PanKri to share knowledge through practical tutorials. Inspired by Mainpuri’s community and tech trends, Pankaj enjoys exploring coding challenges and tech blogs, which fuel his innovative approach.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Our Blog</h2>
+            <p className="text-sm">
+              Our tech blog covers a range of topics, including:
+              <ul className="list-disc pl-5 mt-2">
+                <li>JavaScript: Mastering async/await and ES6 features.</li>
+                <li>React.js: Building dynamic UIs with hooks and state management.</li>
+                <li>Node.js & Express.js: Creating RESTful APIs.</li>
+                <li>MongoDB: Designing scalable databases.</li>
+                <li>CSS & HTML: Crafting responsive designs.</li>
+              </ul>
+              Here’s a sample of what you’ll find:
+              <pre className="bg-gray-100 p-4 rounded mt-2 text-sm overflow-auto">
+                {`// Simple Express.js route
+const express = require('express');
+const app = express();
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'Welcome to PanKri!' });
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));`}
+              </pre>
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Our Vision</h2>
+            <p className="text-sm">
+              We aim to be a leading resource for developers, offering practical tutorials and tools that empower coders in Mainpuri and beyond. Explore our blog for guides like “Building a React.js Dashboard” or “Scaling Node.js with MongoDB.”
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm">
+              Want to contribute or learn more? Contact us at{' '}
+              <a href="mailto:info@pankri.com" className="text-blue-600 hover:underline">
+                info@pankri.com
+              </a> or explore our <Link href="/blog" className="text-blue-600 hover:underline">blog</Link>!
+            </p>
+            <p className="text-sm mt-2">Last Updated: March 23, 2025</p>
+          </div>
+        </section>
+
+        <div className="mt-8">
+          <Link href="/">
+            <span className="text-blue-600 hover:text-blue-800 transition-colors duration-200 text-sm cursor-pointer">
+              Back to Home
+            </span>
+          </Link>
         </div>
 
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Who We Are</h2>
-          <p className="text-sm">
-            Based in Mainpuri, Uttar Pradesh, India, PanKri is the brainchild of Pankaj KrishnaVanshaj, a visionary software engineer and developer with a passion for bridging technology and community needs. Alongside a talented team of innovators, we’ve built a platform that hosts a diverse range of digital solutions—from productivity tools to creative applications—designed to empower users worldwide.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Meet Our Founder: Pankaj KrishnaVanshaj</h2>
-          <p className="text-sm">
-            Pankaj KrishnaVanshaj, often known as PK, is the driving force behind PanKri. A soon-to-be graduate of Software Engineering from CSJM University, Kanpur, Pankaj combines technical expertise with a deep commitment to making technology accessible. With years of experience as a freelance web and app developer, he has honed his skills in creating user-focused, high-quality solutions. Inspired by Mainpuri’s vibrant community and the global potential of digital innovation, Pankaj founded PanKri to provide a platform where creativity meets practicality. Outside of his work, he enjoys exploring movies, series, and video games—interests that fuel his creative approach to problem-solving.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Our Vision</h2>
-          <p className="text-sm">
-            Our vision is to become the leading hub for innovative web and app experiences, fostering growth and connectivity in the digital world. We strive to empower local talent in Mainpuri while delivering tools that resonate globally, ensuring every user finds value in our unique offerings.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">What We Offer</h2>
-          <p className="text-sm">
-            PanKri brings you a curated collection of original websites and applications tailored to diverse needs—whether you’re a student, professional, or creator. From productivity enhancers to creative platforms, our tools are designed with user experience in mind. We continuously evolve our offerings to stay ahead of digital trends and meet the demands of our growing community.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800 mb-2">Why PanKri?</h2>
-          <p className="text-sm">
-            At PanKri, we prioritize originality, quality, and user satisfaction. Rooted in Mainpuri’s spirit of resilience and innovation, our platform stands out by delivering reliable, purpose-driven digital solutions. Under Pankaj’s leadership, we’re committed to pushing boundaries and creating a lasting impact in the digital space.
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm">
-            Want to learn more about PanKri or collaborate with us? Reach out at{' '}
-            <a href="mailto:info@pankri.com" className="text-blue-600 hover:underline">
-              info@pankri.com
-            </a>. We’re excited to connect with you!
-          </p>
-          <p className="text-sm mt-2">Last Updated: March 23, 2025</p>
-        </div>
-      </section>
-
-      <div className="mt-8">
-        <Link href="/">
-          <span className="text-blue-600 hover:text-blue-800 transition-colors duration-200 text-sm cursor-pointer">
-            Back to Home
-          </span>
-        </Link>
+       
       </div>
-    </div>
+    </>
   );
 }

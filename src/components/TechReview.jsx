@@ -75,4 +75,39 @@ export const BlogPosts = [
     description:
       "Build robust full-stack apps using MongoDB, Express.js, React, and Node.js.",
   },
+  {
+    title: "Git & GitHub: Version Control Mastery",
+    imageUrl: "/git.png",
+    slug: "/git-github",
+    description:
+      "Learn how to track changes, collaborate, and manage code using Git and GitHub.",
+  },
+  {
+    title: "Redux Toolkit: State Made Simple",
+    imageUrl: "/redux.png",
+    slug: "/redux-toolkit",
+    description:
+      "Simplify state management in React apps with Redux Toolkit and its powerful APIs.",
+  },
+  {
+    title: "RESTful APIs: Designing Web Services",
+    imageUrl: "/restapi.png",
+    slug: "/restful-apis",
+    description:
+      "Understand the principles of REST and how to design scalable, secure APIs.",
+  },
+  {
+    title: "GraphQL: Query Language for APIs",
+    imageUrl: "/graphql.png",
+    slug: "/graphql",
+    description:
+      "Build efficient APIs with GraphQL, enabling clients to request exactly what they need.",
+  },
+  {
+    title: "Docker: Containerizing Applications",
+    imageUrl: "/docker.png",
+    slug: "/docker",
+    description:
+      "Explore Docker for packaging applications and ensuring consistent environments.",
+  },
 ];

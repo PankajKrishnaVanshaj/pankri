@@ -110,4 +110,60 @@ export const BlogPosts = [
     description:
       "Explore Docker for packaging applications and ensuring consistent environments.",
   },
+  {
+    title: "Vite: Lightning-Fast Development",
+    imageUrl: "/vite.png",
+    slug: "/vite",
+    description:
+      "Boost your front-end development with Vite’s fast bundling and hot module replacement.",
+  },
+  {
+    title: "Zustand: Minimal State Management",
+    imageUrl: "/zustand.png",
+    slug: "/zustand",
+    description:
+      "Manage React app state with ease using Zustand’s simple and scalable store.",
+  },
+  {
+    title: "Prisma ORM: Type-Safe Database Access",
+    imageUrl: "/prisma.png",
+    slug: "/prisma-orm",
+    description:
+      "Simplify database access in Node.js apps with Prisma’s type-safe and intuitive ORM.",
+  },
+  {
+    title: "Framer Motion: Animate with Ease",
+    imageUrl: "/framer-motion.png",
+    slug: "/framer-motion",
+    description:
+      "Create stunning animations in React using Framer Motion’s simple and powerful API.",
+  },
+  {
+    title: "Firebase: Real-Time Backend Services",
+    imageUrl: "/firebase.png",
+    slug: "/firebase",
+    description:
+      "Leverage Firebase for authentication, real-time databases, and serverless functions.",
+  },
+  {
+    title: "Jest: JavaScript Testing Framework",
+    imageUrl: "/jest.png",
+    slug: "/jest-testing",
+    description:
+      "Test your JavaScript and React code confidently using Jest’s powerful testing features.",
+  },
+  {
+    title: "PNPM: Fast and Efficient Package Manager",
+    imageUrl: "/pnpm.png",
+    slug: "/pnpm",
+    description:
+      "Improve performance and disk usage in JavaScript projects using PNPM’s unique symlink system.",
+  },
+  {
+    title: "NPM: Node Package Manager Essentials",
+    imageUrl: "/npm.png",
+    slug: "/npm",
+    description:
+      "Master npm for installing packages, managing dependencies, and scripting tasks in Node.js projects.",
+  },
 ];

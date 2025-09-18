@@ -1,6 +1,8 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { NextAuthProvider } from "./Providers";
+import SideButtons from "@/components/SideButtons";
 
 const globalJsonLd = {
   "@context": "https://schema.org",
@@ -82,9 +84,7 @@ export default function RootLayout({ children }) {
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://pankri.com" />
-        <link rel="preload" href="/favicon.ico" as="image" />
-        <link rel="preload" href="/globals.css" as="style" />
-        <link rel="icon" href="/favicon.ico" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -98,9 +98,13 @@ export default function RootLayout({ children }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3026350025047312"
           crossorigin="anonymous"
         ></script>
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <NextAuthProvider>
+          <Header />
+          <SideButtons />
+
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </NextAuthProvider>
       </body>
     </html>
   );

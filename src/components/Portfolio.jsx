@@ -11,17 +11,35 @@ const Portfolio = () => {
             Pankaj KrishnaVanshaj
           </h2>
           <p className="text-xl text-blue-600 font-semibold mb-4">
-            Full-Stack Developer & Blogger
+            Full-Stack Developer & Tech Blogger
           </p>
           <p className="text-gray-700 leading-relaxed mb-6">
-            I am a passionate developer who loves crafting scalable web
-            applications and sharing knowledge through educational content. My
-            focus lies in modern web technologies like{" "}
-            <span className="font-semibold text-gray-900">Next.js</span>,{" "}
-            <span className="font-semibold text-gray-900">Tailwind CSS</span>, and
-            other cutting-edge JavaScript frameworks. I constantly explore new
-            tools and techniques to build efficient, elegant, and user-friendly
-            solutions.
+            I am a full-stack developer and technology blogger passionate about
+            building
+            <span className="font-semibold text-gray-900">
+              {" "}
+              scalable web applications
+            </span>{" "}
+            and creating content that helps developers and businesses grow. My
+            expertise includes modern frameworks like{" "}
+            <span className="font-semibold text-gray-900">Next.js</span>,
+            <span className="font-semibold text-gray-900"> Tailwind CSS</span>,{" "}
+            and the latest
+            <span className="font-semibold text-gray-900">
+              {" "}
+              JavaScript
+            </span>{" "}
+            ecosystems. On this blog, I share tutorials, coding tips, and
+            insights about
+            <span className="font-semibold text-gray-900">
+              {" "}
+              web development, software engineering,
+            </span>{" "}
+            and{" "}
+            <span className="font-semibold text-gray-900">
+              best practices
+            </span>{" "}
+            to help others stay ahead in the fast-changing tech world.
           </p>
         </div>
 

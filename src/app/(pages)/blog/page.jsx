@@ -1,6 +1,6 @@
 import AdSlot from "@/components/AdSlot";
-import { posts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import { getPosts } from "@/lib/posts";
 
 // ✅ Page-level SEO Metadata
 export const metadata = {
@@ -66,7 +66,9 @@ const blogJsonLd = {
   },
 };
 
-export default function Blog() {
+export default async function Blog() {
+    const posts = await getPosts();
+  
   return (
     <main className="container mx-auto px-4 py-16">
       {/* ✅ Inject JSON-LD */}

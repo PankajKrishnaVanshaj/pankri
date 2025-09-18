@@ -1,10 +1,11 @@
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Portfolio from "@/components/Portfolio";
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getPosts();
   const featuredPosts = posts.slice(0, 6);
 
   return (

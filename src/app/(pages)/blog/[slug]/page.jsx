@@ -1,11 +1,15 @@
 import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
-import { posts } from "@/lib/posts";
+import { getPosts } from "@/lib/posts";
 import Link from "next/link";
 
 // ✅ Generate dynamic metadata per post
 export async function generateMetadata({ params }) {
-  const post = posts.find((p) => p.slug === params.id);
+  const { slug } = await params;
+
+  const posts = await getPosts(); // fetch posts first
+
+  const post = posts.find((p) => p.slug === slug);
 
   if (!post) return { title: "Post Not Found | PanKri" };
 
@@ -31,7 +35,9 @@ export async function generateMetadata({ params }) {
       siteName: "PanKri",
       images: [
         {
-          url: post.image ? `https://pankri.com${post.image}` : "https://pankri.com/pankri.png",
+          url: post.image
+            ? `https://pankri.com${post.image}`
+            : "https://pankri.com/pankri-blog.png",
           width: 1200,
           height: 630,
           alt: post.title,
@@ -39,7 +45,7 @@ export async function generateMetadata({ params }) {
       ],
       locale: "en_US",
       type: "article",
-      publishedTime: post.date,
+      publishedTime: post.createdAt,
       authors: ["PanKri"],
     },
     twitter: {
@@ -48,7 +54,9 @@ export async function generateMetadata({ params }) {
       description: post.excerpt,
       creator: "@pankri_official",
       images: [
-        post.image ? `https://pankri.com${post.image}` : "https://pankri.com/pankri.png",
+        post.image
+          ? `https://pankri.com${post.image}`
+          : "https://pankri.com/pankri-blog.png",
       ],
     },
     alternates: {
@@ -64,10 +72,12 @@ function getPostJsonLd(post) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: post.image ? `https://pankri.com${post.image}` : "https://pankri.com/pankri.png",
+    image: post.image
+      ? `https://pankri.com${post.image}`
+      : "https://pankri.com/pankri-blog.png",
     url: `https://pankri.com/blog/${post.slug}`,
-    datePublished: post.date,
-    dateModified: post.date,
+    datePublished: post.createdAt,
+    dateModified: post.updatedAt,
     author: {
       "@type": "Person",
       name: "PanKri",
@@ -84,49 +94,52 @@ function getPostJsonLd(post) {
   };
 }
 
-export default function Post({ params }) {
-  const post = posts.find((p) => p.slug === params.id);
+export default async function Post({ params }) {
+  const { slug } = await params;
+;
 
-  if (!post) {
-    notFound();
-  }
+  // Fetch all posts
+  const posts = await getPosts();
 
-  // Latest 5 posts (excluding current)
-  const latestPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 5);
+  // Find current post
+  const post = posts.find((p) => p.slug === slug);
+  if (!post) notFound();
 
-  // Suggestions (pick first 3 different posts)
-  const suggestions = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  // Latest 5 posts excluding current
+  const latestPosts = posts.filter((p) => p.slug !== slug).slice(0, 5);
+
+  // Suggestions (first 3 different posts)
+  const suggestions = posts.filter((p) => p.slug !== slug).slice(5, 9);
 
   return (
-    <div className="container mx-auto px-4 py-12 grid lg:grid-cols-4 gap-12">
+    <div className="container mx-auto px-4 py-12 grid lg:grid-cols-4 gap-6">
       {/* ✅ Inject JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getPostJsonLd(post)),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getPostJsonLd(post)) }}
       />
 
       {/* Main Content */}
       <article className="lg:col-span-3 max-w-3xl">
-        {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 leading-tight p-4 bg-white rounded-2xl ">
             {post.title}
           </h1>
-          <p className="text-sm text-gray-500">
-            {new Date(post.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
+          {post.updatedAt && (
+            <p className="text-sm text-gray-500">
+              {new Date(post.updatedAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+          )}
         </header>
 
         {/* Content */}
         <div
-          className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 hover:prose-a:text-blue-700 prose-li:marker:text-blue-600 prose-img:rounded-xl prose-img:shadow-sm"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          className="prose prose-lg max-w-none p-4 bg-white rounded-2xl "
+          dangerouslySetInnerHTML={{ __html: post.content || "" }}
         />
 
         {/* In-content Ad */}
@@ -157,21 +170,17 @@ export default function Post({ params }) {
                 <h3 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition">
                   {s.title}
                 </h3>
-                <p className="text-sm text-gray-600 line-clamp-3 mt-3">
-                  {s.excerpt}
-                </p>
+                <p className="text-sm text-gray-600 line-clamp-3 mt-3">{s.excerpt}</p>
               </Link>
             ))}
           </div>
         </section>
       </article>
 
-      {/* Sidebar - Latest Posts */}
+      {/* Sidebar */}
       <aside className="lg:col-span-1">
         <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 sticky top-24">
-          <h2 className="text-lg font-semibold text-gray-900 mb-5">
-            Latest Posts
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-5">Latest Posts</h2>
           <ul className="space-y-5 text-sm">
             {latestPosts.map((p) => (
               <li key={p.slug}>
@@ -183,12 +192,6 @@ export default function Post({ params }) {
                     <p className="text-gray-700 font-medium group-hover:text-blue-600 transition line-clamp-2">
                       {p.title}
                     </p>
-                    <span className="text-xs text-gray-400">
-                      {new Date(p.date).toLocaleDateString("en-US", {
-                        month: "short",
-                        day: "numeric",
-                      })}
-                    </span>
                   </div>
                 </Link>
               </li>

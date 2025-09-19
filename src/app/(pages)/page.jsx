@@ -1,11 +1,27 @@
+"use client";
+
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
 import { getPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Portfolio from "@/components/Portfolio";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
-  const posts = await getPosts();
+export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const data = await getPosts();
+        setPosts(data);
+      } catch (error) {
+        console.error("❌ Failed to load posts:", error);
+      }
+    }
+    fetchPosts();
+  }, []);
+
   const featuredPosts = posts.slice(0, 6);
 
   return (

@@ -5,6 +5,15 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/options";
 
+// ✅ Increase request size limit (default is 1MB)
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "50mb", // adjust as needed
+    },
+  },
+};
+
 // Connect to DB
 async function connectDB() {
   try {
@@ -14,13 +23,22 @@ async function connectDB() {
   }
 }
 
-// 📌 GET single post by ID
-export async function GET(req, context) {
+// GET  (param can be ID or slug)
+export async function GET(req, { params }) {
   try {
     await connectDB();
-    const { id } = await context.params;
 
-    const post = await PostModel.findById(id);
+    const { param } = await params; 
+    let post = null;
+
+    // Check if param looks like a MongoDB ObjectId
+    const isObjectId = /^[0-9a-fA-F]{24}$/.test(param);
+
+    if (isObjectId) {
+      post = await PostModel.findById(param);
+    } else {
+      post = await PostModel.findOne({ slug: param });  // <--- looks for slug in DB
+    }
 
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
@@ -28,7 +46,7 @@ export async function GET(req, context) {
 
     return NextResponse.json(post, { status: 200 });
   } catch (error) {
-    console.error("Error fetching post:", error);
+    console.error("❌ Error fetching post:", error);
     return NextResponse.json(
       { error: "Failed to fetch post" },
       { status: 500 }
@@ -36,11 +54,12 @@ export async function GET(req, context) {
   }
 }
 
+
 // 📌 UPDATE post
-export async function PUT(req, context) {
+export async function PUT(req, { params }) {
   try {
     await connectDB();
-    const { id } = await context.params;
+    const { param } = await params; 
     const { title, slug, excerpt, content } = await req.json();
 
     if (!title || !slug || !content) {
@@ -61,7 +80,7 @@ export async function PUT(req, context) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const post = await PostModel.findById(id);
+    const post = await PostModel.findById(param);
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
@@ -74,7 +93,7 @@ export async function PUT(req, context) {
     // ✅ Exclude current post from slug uniqueness check
     const existingPost = await PostModel.findOne({
       slug: normalizedSlug,
-      _id: { $ne: id },
+      _id: { $ne: param },
     });
     if (existingPost) {
       return NextResponse.json(
@@ -100,10 +119,10 @@ export async function PUT(req, context) {
 }
 
 // 📌 DELETE post
-export async function DELETE(req, context) {
+export async function DELETE(req, { params }) {
   try {
     await connectDB();
-    const { id } = await context.params;
+    const { param } = await params; 
 
     // Validate session
     const session = await getServerSession(authOptions);
@@ -111,7 +130,7 @@ export async function DELETE(req, context) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const post = await PostModel.findById(id);
+    const post = await PostModel.findById(param);
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
@@ -121,7 +140,7 @@ export async function DELETE(req, context) {
       return NextResponse.json({ error: "Permission denied" }, { status: 403 });
     }
 
-    await PostModel.findByIdAndDelete(id);
+    await PostModel.findByIdAndDelete(param);
     return NextResponse.json(
       { success: true, message: "Post deleted successfully" },
       { status: 200 }

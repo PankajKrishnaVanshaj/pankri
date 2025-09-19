@@ -35,6 +35,8 @@ const CreatePost = () => {
     try {
       setLoading(true);
       await axios.post("/api/posts", { title, slug, excerpt, content });
+      alert("✅ Publish Post successfully!");
+
       setTitle("");
       setSlug("");
       setExcerpt("");

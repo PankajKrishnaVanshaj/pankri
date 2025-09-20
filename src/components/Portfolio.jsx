@@ -47,7 +47,7 @@ const Portfolio = () => {
         <div className="flex justify-center md:justify-end">
           <div className="relative">
             <Image
-              src="/pankaj-krishnavanshaj.png"
+              src="/pankaj-krishnavanshaj.webp"
               alt="Pankaj KrishnaVanshaj"
               width={220}
               height={220}

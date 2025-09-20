@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextAuthProvider } from "./Providers";
 import SideButtons from "@/components/SideButtons";
+import Script from "next/script";
 
 const globalJsonLd = {
   "@context": "https://schema.org",
@@ -16,7 +17,7 @@ const globalJsonLd = {
     name: "PanKri",
     logo: {
       "@type": "ImageObject",
-      url: "https://pankri.com/pankri.png",
+      url: "https://pankri.com/pankri.webp",
     },
   },
 };
@@ -45,7 +46,7 @@ export const metadata = {
     siteName: "PanKri",
     images: [
       {
-        url: "/pankri.png",
+        url: "/pankri.webp",
         width: 1200,
         height: 630,
         alt: "PanKri Blog",
@@ -66,7 +67,7 @@ export const metadata = {
     description:
       "Explore expert tutorials on Next.js, Tailwind CSS, JavaScript, and creative web development insights.",
     creator: "@pankri_official",
-    images: ["/pankri.png", "/pankaj-krishnavanshaj.png"],
+    images: ["/pankri.webp", "/pankaj-krishnavanshaj.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -78,12 +79,20 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://pankri.com" />
+        <link
+          rel="preconnect"
+          href="https://pagead2.googlesyndication.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://fundingchoicesmessages.google.com"
+          crossOrigin="anonymous"
+        />
 
         <script
           type="application/ld+json"
@@ -92,12 +101,14 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
+
       <body className="bg-gray-50 text-gray-900 antialiased">
-        <script
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3026350025047312"
-          crossorigin="anonymous"
-        ></script>
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
         <NextAuthProvider>
           <Header />
           <SideButtons />

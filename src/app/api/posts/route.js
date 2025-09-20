@@ -89,11 +89,29 @@ export async function POST(req) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
     await connectDB();
 
-    const posts = await PostModel.find({}).sort({ createdAt: -1 });
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get("slug");
+    const limit = parseInt(searchParams.get("limit")) || 10;
+    const excludeSlug = searchParams.get("exclude") || null;
+
+    let query = {};
+    if (slug) {
+      query.slug = slug; // Fetch single post by slug
+    } else if (excludeSlug) {
+      query.slug = { $ne: excludeSlug }; // Exclude a specific post
+    }
+
+    const posts = await PostModel.find(query)
+      .sort({ createdAt: -1 })
+      .limit(limit);
+
+    if (slug && posts.length === 0) {
+      return NextResponse.json({ error: "Post not found" }, { status: 404 });
+    }
 
     return NextResponse.json(posts, { status: 200 });
   } catch (error) {

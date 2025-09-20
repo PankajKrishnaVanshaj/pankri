@@ -2,24 +2,33 @@
 
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
-import { getPosts } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
 import Portfolio from "@/components/Portfolio";
 import { useEffect, useState } from "react";
+import { apiClient } from "@/lib/api";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchPosts() {
       try {
-        const data = await getPosts();
-        setPosts(data);
+        const { data } = await apiClient.get(`/api/posts?limit=10`);
+        if (mounted) setPosts(data);
       } catch (error) {
         console.error("❌ Failed to load posts:", error);
+      } finally {
+        if (mounted) setLoading(false);
       }
     }
+
     fetchPosts();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const featuredPosts = posts.slice(0, 6);
@@ -44,9 +53,17 @@ export default function Home() {
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredPosts.map((post) => (
-            <PostCard key={post.slug} {...post} />
-          ))}
+          {loading ? (
+            <p className="text-gray-500 col-span-full text-center animate-pulse">
+              Loading posts...
+            </p>
+          ) : featuredPosts.length > 0 ? (
+            featuredPosts.map((post) => <PostCard key={post.slug} {...post} />)
+          ) : (
+            <p className="text-gray-500 col-span-full text-center">
+              No posts available.
+            </p>
+          )}
         </div>
       </section>
 

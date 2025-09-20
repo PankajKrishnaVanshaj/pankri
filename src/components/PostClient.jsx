@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import AdSlot from "@/components/AdSlot";
-import { getPosts } from "@/lib/posts";
+import dynamic from "next/dynamic";
+import { apiClient } from "@/lib/api";
+
+const AdSlot = dynamic(() => import("@/components/AdSlot"), { ssr: false });
 
 function getPostJsonLd(post) {
   const image = post.image
     ? `https://pankri.com${post.image}`
-    : "https://pankri.com/pankri-blog.png";
+    : "https://pankri.com/pankri-blog.webp";
 
   return {
     "@context": "https://schema.org",
@@ -24,9 +26,37 @@ function getPostJsonLd(post) {
     publisher: {
       "@type": "Organization",
       name: "PanKri",
-      logo: { "@type": "ImageObject", url: "https://pankri.com/pankri.png" },
+      logo: { "@type": "ImageObject", url: "https://pankri.com/pankri.webp" },
     },
   };
+}
+
+
+
+// Fetch a single post by slug
+async function getPostBySlug(slug) {
+  try {
+    const { data } = await apiClient.get(`/api/posts/${slug}`);
+    return data;
+  } catch (err) {
+    console.error("❌ Error fetching post:", err);
+    return null;
+  }
+}
+
+// Fetch latest posts (excluding current)
+async function getLatestPosts(excludeSlug, limit = 5) {
+  try {
+    const { data } = await apiClient.get(`/api/posts?limit=${limit + 5}`);
+    const posts = data.filter((p) => p.slug !== excludeSlug);
+    return {
+      latestPosts: posts.slice(0, limit),
+      suggestions: posts.slice(limit, limit + 4),
+    };
+  } catch (err) {
+    console.error("❌ Error fetching latest posts:", err);
+    return { latestPosts: [], suggestions: [] };
+  }
 }
 
 export default function PostClient({ slug }) {
@@ -38,60 +68,51 @@ export default function PostClient({ slug }) {
   useEffect(() => {
     let mounted = true;
 
-    async function fetchPostData() {
-      try {
-        const posts = await getPosts();
-        const foundPost = posts.find((p) => p.slug === slug);
+    async function fetchData() {
+      const fetchedPost = await getPostBySlug(slug);
+      if (!fetchedPost) {
+        notFound();
+        return;
+      }
 
-        if (!foundPost) {
-          notFound();
-          return;
-        }
+      const { latestPosts, suggestions } = await getLatestPosts(slug);
 
-        if (mounted) {
-          setPost(foundPost);
-          const others = posts.filter((p) => p.slug !== slug);
-          setLatestPosts(others.slice(0, 5));
-          setSuggestions(others.slice(5, 9));
-        }
-      } catch (err) {
-        console.error("❌ Error loading post:", err);
-      } finally {
-        if (mounted) setLoading(false);
+      if (mounted) {
+        setPost(fetchedPost);
+        setLatestPosts(latestPosts);
+        setSuggestions(suggestions);
+        setLoading(false);
       }
     }
 
-    fetchPostData();
-
+    fetchData();
     return () => {
       mounted = false;
     };
   }, [slug]);
 
-  if (loading) {
+  if (loading)
     return (
       <p className="text-center py-20 text-gray-500 animate-pulse">
         Loading post...
       </p>
     );
-  }
 
-  if (!post) return null; // handled by notFound()
+  if (!post) return null;
 
   return (
     <div className="container mx-auto px-4 py-12 grid lg:grid-cols-4 gap-10">
-      {/* ✅ JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getPostJsonLd(post)) }}
       />
 
-      {/* Main Content */}
       <article className="lg:col-span-3 max-w-3xl">
         <header className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4 bg-white p-6 rounded-2xl shadow-sm">
-            {post.title}
-          </h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4 bg-white p-4 sm:p-6 rounded-2xl shadow-sm">
+  {post.title}
+</h1>
+
           {post.updatedAt && (
             <p className="text-sm text-gray-500 pl-2">
               {new Date(post.updatedAt).toLocaleDateString("en-US", {
@@ -103,18 +124,15 @@ export default function PostClient({ slug }) {
           )}
         </header>
 
-        {/* Content */}
         <div
           className="prose prose-lg max-w-none p-6 bg-white rounded-2xl shadow-sm prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 hover:prose-a:text-blue-700"
           dangerouslySetInnerHTML={{ __html: post.content || "" }}
         />
 
-        {/* In-content Ad */}
         <div className="my-16 flex justify-center">
           <AdSlot className="w-full max-w-md" />
         </div>
 
-        {/* Suggestions */}
         {suggestions.length > 0 && (
           <section className="mt-20 pt-12 border-t border-gray-200">
             <div className="flex items-center justify-between mb-8">
@@ -148,7 +166,6 @@ export default function PostClient({ slug }) {
         )}
       </article>
 
-      {/* Sidebar */}
       {latestPosts.length > 0 && (
         <aside className="lg:col-span-1">
           <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 sticky top-24">

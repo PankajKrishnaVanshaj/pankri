@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, use } from "react";
-import axios from "axios";
 import dynamic from "next/dynamic";
+import { apiClient } from "@/lib/api";
 
 const Editor = dynamic(() => import("../../_components/Editor"), { ssr: false });
 
@@ -21,7 +21,7 @@ const UpdatePost = ({ params }) => {
     const fetchPost = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/posts/${id}`);
+        const { data } = await apiClient.get(`/api/posts/${id}`);
         setTitle(data.title);
         setSlug(data.slug);
         setExcerpt(data.excerpt);
@@ -57,7 +57,7 @@ const UpdatePost = ({ params }) => {
 
     try {
       setSaving(true);
-      await axios.put(`/api/posts/${id}`, { title, slug, excerpt, content });
+      await apiClient.put(`/api/posts/${id}`, { title, slug, excerpt, content });
       alert("✅ Post updated successfully!");
     } catch (error) {
       console.error("Error updating post:", error);

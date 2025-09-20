@@ -29,7 +29,7 @@ const TelegramIcon = ({ className }) => (
 
 export default function SideButtons() {
   return (
-    <div className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 flex flex-col gap-3 sm:gap-4 z-50">
+    <div className="fixed left-2 sm:left-3 top-1/2 -translate-y-1/2 flex flex-col gap-3 sm:gap-4 z-50">
       {/* Share Button */}
       <button
         onClick={() =>

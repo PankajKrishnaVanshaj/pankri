@@ -1,20 +1,38 @@
 import PostClient from "@/components/PostClient";
-import { getPostBySlug } from "@/lib/posts";
+import { apiClient } from "@/lib/api";
+
+// Helper to fetch a single post by slug (server-side)
+async function getPost(slug) {
+  try {
+    const { data } = await apiClient.get(`/api/posts?slug=${slug}`);
+    return data?.[0] || null; // API returns array
+  } catch (err) {
+    console.error("Error fetching post:", err);
+    return null;
+  }
+}
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getPost(slug);
 
-  if (!post) return { title: "Post Not Found | PanKri" };
+  if (!post) {
+    return { title: "Post Not Found | PanKri" };
+  }
 
   const url = `https://pankri.com/blog/${post.slug}`;
   const image = post.image
     ? `https://pankri.com${post.image}`
-    : "https://pankri.com/pankri-blog.png";
+    : "https://pankri.com/pankri-blog.webp";
 
   return {
     title: `${post.title} | PanKri Blog`,
-    description: post.excerpt?.slice(0, 160) || "Read the latest blog post on PanKri.",
+    description:
+      post.excerpt?.slice(0, 160) ||
+      "Read the latest blog post on PanKri.",
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: `${post.title} | PanKri Blog`,
       description: post.excerpt,
@@ -29,7 +47,6 @@ export async function generateMetadata({ params }) {
       description: post.excerpt,
       images: [image],
     },
-    alternates: { canonical: url },
   };
 }
 

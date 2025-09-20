@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Edit, Trash2, Plus, FileText, Users, ThumbsUp, Eye } from "lucide-react";
 import Link from "next/link";
+import { apiClient } from "@/lib/api";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
@@ -14,7 +14,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axios.get("/api/author");
+        const { data } = await apiClient.get("/api/author");
         setPosts(data);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -30,7 +30,7 @@ const Dashboard = () => {
 
     try {
       setDeletingId(id);
-      await axios.delete(`/api/posts/${id}`);
+      await apiClient.delete(`/api/posts/${id}`);
       setPosts(posts.filter((post) => post._id !== id));
     } catch (error) {
       console.error("Error deleting post:", error);

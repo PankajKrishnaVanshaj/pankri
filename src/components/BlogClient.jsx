@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import AdSlot from "@/components/AdSlot";
 import PostCard from "@/components/PostCard";
-import { getPosts } from "@/lib/posts";
+import { apiClient } from "@/lib/api";
 
 const blogJsonLd = {
   "@context": "https://schema.org",
@@ -18,24 +18,36 @@ const blogJsonLd = {
     url: "https://pankri.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://pankri.com/pankri.png",
+      url: "https://pankri.com/pankri.webp",
     },
   },
 };
 
+
+
+
 export default function BlogClient() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchPosts() {
       try {
-        const data = await getPosts();
-        setPosts(data);
+        const { data } = await apiClient.get(`/api/posts?limit=100`);
+        if (mounted) setPosts(data);
       } catch (error) {
         console.error("❌ Failed to load posts:", error);
+      } finally {
+        if (mounted) setLoading(false);
       }
     }
+
     fetchPosts();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
@@ -61,7 +73,11 @@ export default function BlogClient() {
       <section>
         <h2 className="sr-only">All Posts</h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-          {posts.length > 0 ? (
+          {loading ? (
+            <p className="text-gray-500 col-span-full text-center animate-pulse">
+              Loading posts...
+            </p>
+          ) : posts.length > 0 ? (
             posts.map((post) => <PostCard key={post.slug} {...post} />)
           ) : (
             <p className="text-gray-500 col-span-full text-center">

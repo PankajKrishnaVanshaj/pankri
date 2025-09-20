@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import dynamic from "next/dynamic";
+import { apiClient } from "@/lib/api";
 
 const Editor = dynamic(() => import("../_components/Editor"), { ssr: false });
 
@@ -34,7 +34,7 @@ const CreatePost = () => {
 
     try {
       setLoading(true);
-      await axios.post("/api/posts", { title, slug, excerpt, content });
+      await apiClient.post("/api/posts", { title, slug, excerpt, content });
       alert("✅ Publish Post successfully!");
 
       setTitle("");

@@ -16,9 +16,7 @@ export const metadata = {
     "Tech Articles",
     "Programming Insights",
   ],
-  alternates: {
-    canonical: "https://pankri.com/blog",
-  },
+  
 };
 
 

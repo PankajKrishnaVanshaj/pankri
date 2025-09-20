@@ -19,7 +19,7 @@ const Header = () => {
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/pankri.png"
+            src="/pankri.webp"
             alt="PanKri Logo"
             width={36}
             height={36}

@@ -30,7 +30,9 @@ export async function generateMetadata({ params }) {
     description:
       post.excerpt?.slice(0, 160) ||
       "Read the latest blog post on PanKri.",
-    
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title: `${post.title} | PanKri Blog`,
       description: post.excerpt,

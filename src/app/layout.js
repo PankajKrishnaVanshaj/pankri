@@ -104,7 +104,7 @@ export default function RootLayout({ children }) {
       <body className="bg-gray-50 text-gray-900 antialiased">
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3026350025047312"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />

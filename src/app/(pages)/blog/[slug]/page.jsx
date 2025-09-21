@@ -27,12 +27,8 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${post.title} | PanKri Blog`,
-    description:
-      post.excerpt?.slice(0, 160) ||
-      "Read the latest blog post on PanKri.",
-    alternates: {
-      canonical: url,
-    },
+    description: post.excerpt?.slice(0, 160) || "Read the latest blog post on PanKri.",
+    alternates: { canonical: url },
     openGraph: {
       title: `${post.title} | PanKri Blog`,
       description: post.excerpt,
@@ -46,6 +42,11 @@ export async function generateMetadata({ params }) {
       title: `${post.title} | PanKri Blog`,
       description: post.excerpt,
       images: [image],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      maxImagePreview: "large", 
     },
   };
 }

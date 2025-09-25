@@ -151,18 +151,6 @@ function getPostJsonLd(post) {
     keywords: post.tags?.join(", ") || "blog, news, insights, PanKri",
     inLanguage: "en-US",
     isAccessibleForFree: true,
-    hasPart: post.video
-      ? [
-          {
-            "@type": "VideoObject",
-            name: post.title,
-            description: post.excerpt || post.title,
-            thumbnailUrl: image,
-            uploadDate: post.createdAt,
-            contentUrl: post.video,
-          },
-        ]
-      : [],
   };
 }
 

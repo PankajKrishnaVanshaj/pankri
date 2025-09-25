@@ -1,30 +1,26 @@
 import * as cheerio from 'cheerio';
 
 export function sanitizeAmpHtml(html) {
-  if (!html) return '';
+  if (!html || typeof html !== 'string') {
+    console.warn("sanitizeAmpHtml: Received invalid HTML:", html);
+    return '';
+  }
+
+  console.log("Sanitizing HTML:", html); // Debug log
 
   const $ = cheerio.load(html, { decodeEntities: false });
 
-  // 1. Replace <img> with <amp-img>
-  $('img').each((i, el) => {
-    const element = $(el);
-    const src = element.attr('src');
-    const alt = element.attr('alt') || 'Image';
-    const width = element.attr('width') || '1200'; // Fallback width
-    const height = element.attr('height') || '675'; // Fallback height (16:9 ratio)
+  // Remove all JavaScript-related attributes
+  $('*').removeAttr('on*'); // Remove onclick, onload, etc.
 
-    // Ensure HTTPS for src
-    if (!src || !src.startsWith('https')) {
-      element.remove();
-      return;
-    }
+  // Remove disallowed tags
+  const disallowedTags = ['script', 'style', 'form', 'object', 'embed', 'applet', 'input', 'button'];
+  disallowedTags.forEach((tag) => $(tag).remove());
 
-    element.replaceWith(
-      `<amp-img src="${src}" alt="${alt}" width="${width}" height="${height}" layout="responsive"></amp-img>`
-    );
-  });
+  // Since no images, skip img handling, but ensure no img tags remain
+  $('img').remove();
 
-  // 2. Replace <iframe> with <amp-iframe>
+  // Handle iframes (if any)
   $('iframe').each((i, el) => {
     const element = $(el);
     const src = element.attr('src');
@@ -40,19 +36,19 @@ export function sanitizeAmpHtml(html) {
     }
   });
 
-  // 3. Remove forbidden tags and attributes
-  const disallowedTags = ['script', 'style', 'form', 'object', 'embed', 'applet'];
-  disallowedTags.forEach((tag) => $(tag).remove());
+  // Remove inline styles and other attributes
   $('*').removeAttr('style').removeAttr('onclick').removeAttr('onload').removeAttr('onerror');
 
-  // 4. Ensure valid AMP HTML
+  // Validate links
   $('a').each((i, el) => {
     const element = $(el);
     const href = element.attr('href');
     if (href && !href.startsWith('http')) {
-      element.removeAttr('href'); // Remove invalid links
+      element.removeAttr('href');
     }
   });
 
-  return $.html();
+  const sanitized = $.html();
+  console.log("Sanitized HTML:", sanitized); // Debug log
+  return sanitized;
 }

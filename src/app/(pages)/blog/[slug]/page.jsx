@@ -212,15 +212,19 @@ export default async function PostAmpPage({ params }) {
       <meta name="theme-color" content="#2b6cb0" />
       <title>{`${post.title} | PanKri Blog`}</title>
       <link rel="canonical" href={`https://pankri.com/blog/${post.slug}`} />
-      <style dangerouslySetInnerHTML={{
-        __html: `body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-animation:-amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}`,
-        ['amp-boilerplate']: ''
-      }} />
-      <noscript>
-        <style dangerouslySetInnerHTML={{
-          __html: `body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}`,
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-animation:-amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}`,
           ['amp-boilerplate']: ''
-        }} />
+        }}
+      />
+      <noscript>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}`,
+            ['amp-boilerplate']: ''
+          }}
+        />
       </noscript>
       <style dangerouslySetInnerHTML={{ __html: styles, ['amp-custom']: '' }} />
       <script async src="https://cdn.ampproject.org/v0.js"></script>

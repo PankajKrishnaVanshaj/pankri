@@ -10,11 +10,11 @@ export function sanitizeAmpHtml(html) {
     const element = $(el);
     const src = element.attr('src');
     const alt = element.attr('alt') || 'Image';
-    let width = element.attr('width') || '1200'; // Fallback width
-    let height = element.attr('height') || '675'; // Fallback height (16:9 ratio)
+    const width = element.attr('width') || '1200'; // Fallback width
+    const height = element.attr('height') || '675'; // Fallback height (16:9 ratio)
 
     // Ensure HTTPS for src
-    if (src && !src.startsWith('http')) {
+    if (!src || !src.startsWith('https')) {
       element.remove();
       return;
     }
@@ -28,8 +28,8 @@ export function sanitizeAmpHtml(html) {
   $('iframe').each((i, el) => {
     const element = $(el);
     const src = element.attr('src');
-    let width = element.attr('width') || '640';
-    let height = element.attr('height') || '360';
+    const width = element.attr('width') || '640';
+    const height = element.attr('height') || '360';
 
     if (src && src.startsWith('https')) {
       element.replaceWith(

@@ -79,7 +79,6 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         <meta name="robots" content="index, follow" />
         <link
           rel="preconnect"
@@ -91,7 +90,6 @@ export default function RootLayout({ children }) {
           href="https://fundingchoicesmessages.google.com"
           crossOrigin="anonymous"
         />
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -99,14 +97,12 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-
       <body className="bg-gray-50 text-gray-900 antialiased">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
      crossorigin="anonymous"></script>
         <NextAuthProvider>
           <Header />
           <SideButtons />
-
           <main className="min-h-screen">{children}</main>
           <Footer />
         </NextAuthProvider>

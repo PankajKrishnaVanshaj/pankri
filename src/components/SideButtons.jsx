@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { Share2 } from "lucide-react";
 
-//  WhatsApp SVG
+export const config = { amp: 'true' };
+
+// WhatsApp SVG
 const WhatsappIcon = ({ className }) => (
   <svg
     className={className}
@@ -15,7 +17,7 @@ const WhatsappIcon = ({ className }) => (
   </svg>
 );
 
-// Enhanced Telegram SVG
+// Telegram SVG
 const TelegramIcon = ({ className }) => (
   <svg
     className={className}
@@ -33,9 +35,15 @@ export default function SideButtons() {
       {/* Share Button */}
       <button
         onClick={() =>
-          navigator.share?.({ title: document.title, url: window.location.href })
+          navigator.share?.({
+            title: document.title,
+            url: window.location.href,
+          })
         }
-        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-full shadow-lg hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 transition-all duration-300 ease-out"
+        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 
+        bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-full shadow-lg 
+        hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 
+        transition-all duration-300 ease-out"
         title="Share this page"
       >
         <Share2 className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-12 transition-transform duration-300" />
@@ -43,24 +51,46 @@ export default function SideButtons() {
 
       {/* Telegram Button */}
       <Link
-        href="https://t.me/pankri_official" 
+        href="https://t.me/pankri_official"
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-full shadow-lg hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 transition-all duration-300 ease-out"
-        title="Join our Telegram"
+        className="relative group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 
+        bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-full shadow-lg 
+        hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 
+        transition-all duration-300 ease-out"
+        // title="Join our Telegram"
       >
         <TelegramIcon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300" />
+        <span
+          className="flex absolute left-full ml-2 top-1/2 -translate-y-1/2
+  px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm 
+  font-medium rounded-xl shadow-lg
+  bg-gray-600/80 backdrop-blur-md text-white whitespace-nowrap"
+        >
+          Join Telegram
+        </span>
       </Link>
 
       {/* WhatsApp Button */}
       <Link
-        href="https://whatsapp.com/channel/0029Vb5vc2jJf05YiNMRXW2d" 
+        href="https://whatsapp.com/channel/0029Vb5vc2jJf05YiNMRXW2d"
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gradient-to-br from-green-600 to-green-800 text-white rounded-full shadow-lg hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 transition-all duration-300 ease-out"
-        title="Join our WhatsApp"
+        className="relative group flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 
+        bg-gradient-to-br from-green-600 to-green-800 text-white rounded-full shadow-lg 
+        hover:shadow-xl backdrop-blur-lg hover:scale-105 active:scale-95 
+        transition-all duration-300 ease-out"
+        // title="Join our WhatsApp"
       >
         <WhatsappIcon className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform duration-300" />
+        <span
+          className="flex absolute left-full ml-2 top-1/2 -translate-y-1/2
+  px-2 py-1 text-xs sm:px-3 sm:py-1.5 sm:text-sm 
+  font-medium rounded-xl shadow-lg
+  bg-gray-600/80 backdrop-blur-md text-white whitespace-nowrap"
+        >
+          Join WhatsApp
+        </span>
       </Link>
     </div>
   );

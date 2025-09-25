@@ -1,5 +1,7 @@
 import { Facebook, Twitter, Instagram, Linkedin, AtSign } from "lucide-react";
 
+export const config = { amp: 'true' };
+
 const Footer = () => {
   const links = [
     { href: "/", label: "Home" },

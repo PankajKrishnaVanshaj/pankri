@@ -1,5 +1,4 @@
 import { apiClient } from "@/lib/api";
-import { sanitizeAmpHtml } from "@/components/sanitizeAmpHtml";
 
 // Enable AMP mode for this page
 export const config = { amp: "true" };
@@ -63,8 +62,8 @@ export async function generateMetadata({ params }) {
       siteName: "PanKri",
       images: [
         {
-          url: image,
-          width: 1200,
+        url: image,
+        width: 1200,
           height: 630,
           alt: post.title || "PanKri Blog Post Image",
         },
@@ -82,7 +81,7 @@ export async function generateMetadata({ params }) {
       description,
       images: [
         {
-          url: image,
+        url: image,
           alt: post.title || "PanKri Blog Post Image",
         },
       ],
@@ -120,9 +119,9 @@ function getPostJsonLd(post) {
       `Explore ${post.title} on the PanKri Blog for the latest insights.`,
     image: [
       {
-        "@type": "ImageObject",
-        url: image,
-        width: 1200,
+      "@type": "ImageObject",
+      url: image,
+      width: 1200,
         height: 630,
       },
     ],
@@ -131,9 +130,9 @@ function getPostJsonLd(post) {
     dateModified: post.updatedAt || post.createdAt,
     author: [
       {
-        "@type": "Person",
-        name: post.author?.name || "PanKri",
-        url: post.author?.url || "https://pankri.com/about",
+      "@type": "Person",
+      name: post.author?.name || "PanKri",
+      url: post.author?.url || "https://pankri.com/about",
       },
     ],
     publisher: {
@@ -168,10 +167,7 @@ export default async function PostAmpPage({ params }) {
     );
   }
 
-  // Sanitize the post content for AMP
-  const sanitizedContent = sanitizeAmpHtml(post.content);
-
-  // Inline CSS for AMP (minified, under 75KB)
+  // Inline CSS for AMP (under 75KB, optimized for readability)
   const styles = `
     body{font-family:'Roboto',Arial,sans-serif;margin:0;padding:0;background:#f7fafc}
     .container{max-width:800px;margin:0 auto;padding:16px}
@@ -257,7 +253,7 @@ export default async function PostAmpPage({ params }) {
         )}
         <div
           className="content"
-          dangerouslySetInnerHTML={{ __html: sanitizedContent || "" }}
+          dangerouslySetInnerHTML={{ __html: post.content || "" }}
         />
         {post.author?.bio && (
           <div className="author-bio">

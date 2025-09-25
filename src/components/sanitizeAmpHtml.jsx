@@ -2,11 +2,11 @@ import * as cheerio from 'cheerio';
 
 export function sanitizeAmpHtml(html) {
   if (!html || typeof html !== 'string') {
-    console.warn("sanitizeAmpHtml: Received invalid HTML:", html);
+    // console.warn("sanitizeAmpHtml: Received invalid HTML:", html);
     return '';
   }
 
-  console.log("Sanitizing HTML:", html); // Debug log
+  // console.log("Sanitizing HTML:", html); // Debug log
 
   const $ = cheerio.load(html, { decodeEntities: false });
 
@@ -49,6 +49,6 @@ export function sanitizeAmpHtml(html) {
   });
 
   const sanitized = $.html();
-  console.log("Sanitized HTML:", sanitized); // Debug log
+  // console.log("Sanitized HTML:", sanitized); // Debug log
   return sanitized;
 }

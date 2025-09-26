@@ -208,10 +208,10 @@ export default async function PostAmpPage({ params }) {
         )}
 
         
-        <div
-          className="content"
-          dangerouslySetInnerHTML={{ __html: post.content || "" }}
-        />
+        <div className="content">
+  <p>Test content.</p>
+</div>
+
 
         <div className="ad-container">
           <amp-ad

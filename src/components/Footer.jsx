@@ -1,5 +1,4 @@
-import { Facebook, Twitter, Instagram, Linkedin, AtSign } from "lucide-react";
-
+import { Twitter, Instagram, AtSign } from "lucide-react";
 
 const Footer = () => {
   const links = [
@@ -12,9 +11,9 @@ const Footer = () => {
   ];
 
   const socials = [
-    { Icon: Twitter, href: "https://x.com/Pankri_official" },
-    { Icon: Instagram, href: "https://www.instagram.com/pankri_official" },
-    { Icon: AtSign, href: "https://www.threads.net/@pankri_official" },
+    { Icon: Twitter, href: "https://x.com/Pankri_official", label: "Twitter" },
+    { Icon: Instagram, href: "https://www.instagram.com/pankri_official", label: "Instagram" },
+    { Icon: AtSign, href: "https://www.threads.net/@pankri_official", label: "Threads" },
   ];
 
   return (
@@ -55,13 +54,16 @@ const Footer = () => {
             Follow Us
           </h3>
           <div className="flex space-x-4">
-            {socials.map(({ Icon, href }, idx) => (
+            {socials.map(({ Icon, href, label }, idx) => (
               <a
                 key={idx}
                 href={href}
+                aria-label={label}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white hover:scale-110 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-5 h-5" aria-hidden="true" />
               </a>
             ))}
           </div>

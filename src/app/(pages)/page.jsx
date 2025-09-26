@@ -3,7 +3,7 @@ import PostCard from "@/components/PostCard";
 import Portfolio from "@/components/Portfolio";
 import { getLatestPosts } from "@/lib/api";
 
-export const dynamic = "force-dynamic"; 
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const featuredPosts = await getLatestPosts(6);
@@ -27,7 +27,7 @@ export default async function Home() {
           </Link>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featuredPosts?.length > 0 ? (
             featuredPosts.map((post) => <PostCard key={post.slug} {...post} />)
           ) : (

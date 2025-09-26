@@ -16,8 +16,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="w-full bg-white rounded-2xl shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-4">
+    <header className="w-full bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 py-3">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -27,9 +27,9 @@ const Header = () => {
             height={36}
             className="rounded-md"
           />
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-wide">
+          <span className="text-xl sm:text-2xl font-bold text-gray-900 tracking-wide">
             PanKri
-          </h1>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -47,7 +47,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-900"
+          className="md:hidden text-gray-900 focus:outline-none"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle Menu"
         >
@@ -56,22 +56,24 @@ const Header = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-white px-4 sm:px-6 md:px-8 animate-fadeIn">
-          <div className="flex flex-col py-3 space-y-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      <div
+        className={`md:hidden bg-white px-4 sm:px-6 md:px-8 transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-60 py-3" : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col space-y-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="block text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </header>
   );
 };

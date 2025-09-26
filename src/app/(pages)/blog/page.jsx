@@ -1,6 +1,5 @@
 import BlogClient from "@/components/BlogClient";
 
-
 // ✅ Page-level SEO Metadata (can stay server-side in layout or head.tsx)
 export const metadata = {
   title: "Blog - PanKri | Tech, Coding & Creativity Articles",
@@ -16,13 +15,8 @@ export const metadata = {
     "Tech Articles",
     "Programming Insights",
   ],
-  
 };
 
-
-
 export default function Blog() {
-  
-
   return <BlogClient />;
 }

@@ -1,7 +1,5 @@
 import { apiClient } from "@/lib/api";
 
-
-
 export default async function sitemap() {
   try {
     const { data: posts } = await apiClient.get(`/api/posts?limit=100`);

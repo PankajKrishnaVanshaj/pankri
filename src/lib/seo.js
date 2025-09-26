@@ -1,4 +1,3 @@
-
 export function generatePostMetadata(post) {
   if (!post) {
     return {
@@ -22,7 +21,6 @@ export function generatePostMetadata(post) {
     keywords: post.tags?.join(", ") || "blog, news, insights, PanKri",
     alternates: {
       canonical: url,
-      amphtml: `${url}/amp`,
     },
     openGraph: {
       title: `${post.title} | PanKri Blog`,
@@ -59,7 +57,6 @@ export function generatePostMetadata(post) {
   };
 }
 
-
 export function generatePostJsonLd(post) {
   const image = post.image
     ? `https://pankri.com${post.image}`
@@ -87,11 +84,13 @@ export function generatePostJsonLd(post) {
     url: `https://pankri.com/blog/${post.slug}`,
     datePublished: post.createdAt,
     dateModified: post.updatedAt || post.createdAt,
-    author: [{
-      "@type": "Person",
-      name: post.author?.name || "PanKri",
-      url: post.author?.url || "https://pankri.com/about",
-    }],
+    author: [
+      {
+        "@type": "Person",
+        name: post.author?.name || "PanKri",
+        url: post.author?.url || "https://pankri.com/about",
+      },
+    ],
     publisher: {
       "@type": "Organization",
       name: "PanKri",

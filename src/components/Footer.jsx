@@ -1,6 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, AtSign } from "lucide-react";
 
-export const config = { amp: 'true' };
 
 const Footer = () => {
   const links = [
@@ -13,10 +12,8 @@ const Footer = () => {
   ];
 
   const socials = [
-    { Icon: Facebook, href: "#" },
     { Icon: Twitter, href: "https://x.com/Pankri_official" },
     { Icon: Instagram, href: "https://www.instagram.com/pankri_official" },
-    { Icon: Linkedin, href: "#" },
     { Icon: AtSign, href: "https://www.threads.net/@pankri_official" },
   ];
 

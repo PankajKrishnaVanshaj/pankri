@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const config = { amp: 'true' };
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +25,7 @@ const Header = () => {
             width={36}
             height={36}
             className="rounded-md"
+            priority
           />
           <span className="text-xl sm:text-2xl font-bold text-gray-900 tracking-wide">
             PanKri

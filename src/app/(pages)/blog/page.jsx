@@ -1,6 +1,8 @@
-import AdSlot from "@/components/AdSlot";
 import PostCard from "@/components/PostCard";
 import { getLatestPosts } from "@/lib/api";
+import Script from "next/script";
+
+export const dynamic = "force-dynamic"; 
 
 const blogJsonLd = {
   "@context": "https://schema.org",
@@ -27,16 +29,19 @@ export const metadata = {
 };
 
 export default async function Blog() {
-  // Fetch posts server-side
+  // ✅ Now fetches fresh data each time
   const posts = await getLatestPosts(100);
 
   return (
     <main className="container mx-auto px-4 py-16">
       {/* JSON-LD for SEO */}
-      <script
+      <Script
+        id="blog-jsonld"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
-      />
+        strategy="afterInteractive"
+      >
+        {JSON.stringify(blogJsonLd)}
+      </Script>
 
       {/* Page Header */}
       <header className="text-center mb-16">
@@ -51,9 +56,7 @@ export default async function Blog() {
 
       {/* Posts Grid */}
       <section aria-labelledby="all-posts">
-        <h2 id="all-posts" className="sr-only">
-          All Posts
-        </h2>
+        <h2 id="all-posts" className="sr-only">All Posts</h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {posts.length > 0 ? (
             posts.map((post) => <PostCard key={post.slug} {...post} />)
@@ -63,11 +66,6 @@ export default async function Blog() {
             </p>
           )}
         </div>
-      </section>
-
-      {/* Ad Slot */}
-      <section className="max-w-md mx-auto mt-16">
-        <AdSlot />
       </section>
     </main>
   );

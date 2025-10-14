@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextAuthProvider } from "./Providers";
 import SideButtons from "@/components/SideButtons";
+import Script from "next/script";
 
 const globalJsonLd = {
   "@context": "https://schema.org",
@@ -50,12 +51,6 @@ export const metadata = {
         height: 630,
         alt: "PanKri Blog",
       },
-      {
-        url: "/pankaj-krishnavanshaj.png",
-        width: 1200,
-        height: 630,
-        alt: "PanKri Fallback Image",
-      },
     ],
     locale: "en_US",
     type: "website",
@@ -66,7 +61,7 @@ export const metadata = {
     description:
       "Explore expert tutorials on Next.js, Tailwind CSS, JavaScript, and creative web development insights.",
     creator: "@pankri_official",
-    images: ["/pankri.webp", "/pankaj-krishnavanshaj.png"],
+    images: ["/pankri.webp"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -77,19 +72,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* ✅ Basic Meta */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
-        <link
-          rel="preconnect"
-          href="https://pagead2.googlesyndication.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fundingchoicesmessages.google.com"
-          crossOrigin="anonymous"
-        />
+
+        {/* ✅ Schema Markup */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,9 +85,17 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
+
       <body className="bg-gray-50 text-gray-900 antialiased">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
-     crossorigin="anonymous"></script>
+        {/* ✅ Load AdSense script safely */}
+        <Script
+          id="adsense-script"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2178056161997357"
+          crossOrigin="anonymous"
+        />
+
         <NextAuthProvider>
           <Header />
           <SideButtons />

@@ -1,24 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-
+  reactStrictMode: true,
   images: {
     domains: ["lh3.googleusercontent.com"],
-    unoptimized: true, // optional; Next.js can handle optimized images
+    unoptimized: true,
   },
   async headers() {
     return [
-      // HTML pages: allow revalidation but not bfcache-killing
       {
         source: "/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-cache, no-transform",
-          },
-        ],
+        headers: [{ key: "Cache-Control", value: "no-cache, no-transform" }],
       },
-      // Next.js static assets
       {
         source: "/_next/static/:path*",
         headers: [
@@ -28,7 +20,6 @@ const nextConfig = {
           },
         ],
       },
-      // Images
       {
         source: "/images/:path*",
         headers: [
@@ -41,4 +32,5 @@ const nextConfig = {
     ];
   },
 };
+
 export default nextConfig;

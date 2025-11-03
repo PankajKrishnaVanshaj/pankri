@@ -86,11 +86,8 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="bg-gray-50 text-gray-900 antialiased">
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3026350025047312"
-          crossorigin="anonymous"
-        ></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8795652137846923"
+     crossorigin="anonymous"></script>
         <NextAuthProvider>
           <Header />
           <SideButtons />

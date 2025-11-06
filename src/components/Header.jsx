@@ -4,13 +4,13 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/blog", label: "Blog" },
+    { href: "/about-us", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 

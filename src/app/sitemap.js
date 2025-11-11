@@ -2,56 +2,61 @@ import { apiClient } from "@/lib/api";
 
 export default async function sitemap() {
   try {
-    let allPosts = [];
-    let page = 1;
-    const limit = 100;
-    let hasMore = true;
+    // Single fetch: Adjust limit to cover all (your backend likely supports 500+)
+    const { data: posts = [], meta } = await apiClient.get(`/api/posts?limit=1000&sort=updatedAt:desc`, {
+      timeout: 30000, // 30s timeout per call
+    });
 
-    while (hasMore) {
-      const { data: posts, meta } = await apiClient.get(`/api/posts?page=${page}&limit=${limit}`);
-      if (!posts || posts.length === 0) {
-        hasMore = false;
-        break;
-      }
-      allPosts = [...allPosts, ...posts];
-      hasMore = meta?.hasNextPage ?? posts.length === limit;
-      page++;
+    if (!Array.isArray(posts)) {
+      throw new Error("Invalid posts data");
     }
 
-    const postEntries = allPosts.map((post) => ({
-      url: `https://pankri.com/blog/${post.slug}`,
-      lastModified: post.updatedAt ? new Date(post.updatedAt).toISOString() : new Date(post.createdAt || Date.now()).toISOString(),
-      changeFrequency: "weekly",  // Fixed: Use 'changeFrequency' for <changefreq> in XML
-      priority: 0.8,
-    }));
+    const postEntries = posts
+      .filter(post => post.slug) // Safety: Skip invalids
+      .map((post) => ({
+        url: `https://pankri.com/blog/${post.slug}`,
+        lastModified: post.updatedAt 
+          ? new Date(post.updatedAt).toISOString() 
+          : new Date(post.createdAt || Date.now()).toISOString(),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      }))
+      .slice(0, 5000); // Hard cap for huge sites; yours is fine at 82
 
-    // Fetch site-wide lastmod if available (e.g., from /api/site-info); fallback to now
-    const siteLastMod = new Date().toISOString(); // TODO: Replace with actual fetch if you have one
+    const now = new Date().toISOString();
 
     return [
       {
         url: "https://pankri.com",
-        lastModified: siteLastMod,
-        changeFrequency: "daily",  // Fixed key
+        lastModified: now, // Or fetch from /api/site if available
+        changeFrequency: "daily",
         priority: 1.0,
       },
       {
         url: "https://pankri.com/blog",
-        lastModified: siteLastMod,
+        lastModified: now,
         changeFrequency: "daily",
         priority: 0.9,
       },
       ...postEntries,
-      // Optional: Add key subdomains for cross-discovery (submit separate sitemaps in GSC)
-      // { url: "https://grapix.pankri.com", lastModified: siteLastMod, changeFrequency: "monthly", priority: 0.7 },
     ];
   } catch (error) {
-    console.error("❌ Failed to generate sitemap:", error);
-    // Enhanced fallback with changeFrequency
-    const now = new Date().toISOString();
+    console.error("❌ Sitemap generation failed:", error);
+    // Robust fallback: Hardcode essentials (add a few recent slugs manually if needed)
+    const fallbackPosts = [  // From your live sitemap; rotate as needed
+      { slug: "ethical-ai-marketing-for-freelancers-how-to-dodge-bias-and-privacy-pitfalls-for-premium-brand-wins-in-2025", lastModified: "2025-11-06T14:06:31Z" },
+      // Add 5-10 more top slugs here for SEO safety
+    ].map(p => ({
+      url: `https://pankri.com/blog/${p.slug}`,
+      lastModified: p.lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
+
     return [
-      { url: "https://pankri.com", lastModified: now, changeFrequency: "daily", priority: 1.0 },
-      { url: "https://pankri.com/blog", lastModified: now, changeFrequency: "daily", priority: 0.9 },
+      { url: "https://pankri.com", lastModified: new Date().toISOString(), changeFrequency: "daily", priority: 1.0 },
+      { url: "https://pankri.com/blog", lastModified: new Date().toISOString(), changeFrequency: "daily", priority: 0.9 },
+      ...fallbackPosts,
     ];
   }
 }

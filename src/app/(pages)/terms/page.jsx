@@ -1,120 +1,191 @@
+import Link from "next/link";
+
 export default function Terms() {
+  const lastUpdated = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
-    <main className="container mx-auto px-4 py-16">
-      {/* Page Header */}
-      <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+    <main className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
+      {/* Header */}
+      <header className="text-center mb-16">
+        <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
           Terms & Conditions
         </h1>
-        <p className="text-gray-600 text-base md:text-lg">
-          Last updated: {new Date().toLocaleDateString()}
-        </p>
+        
       </header>
 
-      <section className="space-y-8 text-gray-700">
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">1. Introduction</h2>
-          <p className="leading-relaxed">
-            Welcome to PanKri[](https://pankri.com/), a blog providing original content on web development, coding tutorials, AI trends, and technology insights. These Terms & Conditions ("Terms") govern your access to and use of our website and services. By accessing or using PanKri, you agree to be bound by these Terms. If you do not agree, please do not use the site. We may update these Terms periodically; continued use constitutes acceptance of changes.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">2. Intellectual Property</h2>
-          <p className="leading-relaxed">
-            All content on PanKri, including articles, tutorials, images, code snippets, and designs (collectively, "Content"), is owned by or licensed to Pankaj KrishnaVanshaj (the "Owner") and protected by copyright, trademark, and other intellectual property laws. You may view, download, or print Content for personal, non-commercial use only. Unauthorized reproduction, distribution, modification, or commercial use without written permission is strictly prohibited.
-          </p>
-          <p className="leading-relaxed mt-4">
-            If you believe your IP rights have been infringed, contact us at{" "}
-            <a href="mailto:contact@pankri.com" className="text-blue-600 hover:underline">
-              contact@pankri.com
-            </a>
-            .
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">3. User Conduct and Acceptable Use</h2>
-          <p className="leading-relaxed">
-            You agree to use PanKri responsibly and in compliance with all applicable laws. Prohibited activities include:
-          </p>
-          <ul className="list-disc list-inside leading-relaxed mt-4 space-y-1">
-            <li>Posting or uploading unlawful, harmful, or infringing content (e.g., spam, malware, or copyrighted material).</li>
-            <li>Attempting to hack, disrupt, or overload the site.</li>
-            <li>Using automated tools (e.g., bots, scrapers) to access Content without permission.</li>
-            <li>Impersonating others or misrepresenting your affiliation with PanKri.</li>
-            <li>Engaging in commercial activities without consent, such as affiliate marketing in comments.</li>
-          </ul>
-          <p className="leading-relaxed mt-4">
-            We reserve the right to monitor interactions (e.g., comments) and remove content that violates these Terms.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">4. Advertising and Third-Party Services</h2>
-          <p className="leading-relaxed">
-            PanKri uses Google AdSense to display advertisements. By using the site, you agree to Google's AdSense policies and terms, available at{" "}
-            <a
-              href="https://policies.google.com/technologies/ads"
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
+      {/* Content */}
+      <section className="prose prose-lg prose-emerald max-w-none space-y-12 text-gray-700">
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            1. Welcome to PanKri Finance
+          </h2>
+          <p className="leading-relaxed text-base">
+            PanKri Finance (
+            <Link
+              href="/"
+              className="text-emerald-600 hover:underline font-medium"
             >
-              Google's Ads Policy
-            </a>
-            . Ads are served by third parties and may use cookies or tracking technologies. We do not endorse or control ad content. Clicks or interactions with ads are at your own risk.
+              https://pankri.com
+            </Link>
+            ) is a personal finance and investing education platform created and
+            operated by <strong>Pankaj KrishnaVanshaj</strong>.
           </p>
-          <p className="leading-relaxed mt-4">
-            The site may include links to third-party websites or services (e.g., tutorials linking to external tools). We are not responsible for their availability, content, privacy practices, or transactions. Use them at your own discretion.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">5. Disclaimers and Limitation of Liability</h2>
-          <p className="leading-relaxed">
-            PanKri is provided "as is" without warranties of any kind, express or implied, including accuracy, completeness, or fitness for a particular purpose. Content is for informational purposes only and not professional advice (e.g., code examples may require adaptation).
-          </p>
-          <p className="leading-relaxed mt-4">
-            To the fullest extent permitted by law, the Owner, PanKri, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the site, including but not limited to data loss, viruses, or reliance on Content.
+          <p className="mt-4">
+            By accessing or using our website, you agree to be bound by these
+            Terms & Conditions. If you do not agree, please do not use the site.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">6. Termination</h2>
-          <p className="leading-relaxed">
-            We may suspend or terminate your access to PanKri at any time, without notice, for violations of these Terms or as required by law. Upon termination, your right to use the site ends immediately.
-          </p>
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            2. Important Disclaimer – Not Financial Advice
+          </h2>
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6">
+            <p className="font-bold text-amber-900 text-lg mb-2">
+              Critical Notice
+            </p>
+            <p className="text-amber-800">
+              All content on PanKri Finance is for{" "}
+              <strong>informational and educational purposes only</strong>. It
+              is{" "}
+              <strong>
+                not personalized financial, investment, legal, or tax advice
+              </strong>
+              .
+            </p>
+            <p className="mt-3 text-amber-800">
+              You should not make any financial decisions based solely on what
+              you read here. Always consult a qualified financial advisor before
+              investing or making money-related decisions.
+            </p>
+          </div>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">7. Governing Law and Disputes</h2>
-          <p className="leading-relaxed">
-            These Terms are governed by the laws of India, without regard to conflict of laws principles. Any disputes shall be resolved exclusively in the courts of [Your City/State, e.g., Mumbai, Maharashtra]. You agree to submit to such jurisdiction.
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            3. Intellectual Property
+          </h2>
+          <p>
+            All content on PanKri Finance — including articles, guides, images,
+            videos, and code — is owned by Pankaj KrishnaVanshaj or used under
+            license.
           </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">8. Updates to These Terms</h2>
-          <p className="leading-relaxed">
-            We may revise these Terms at any time. Changes will be posted here with the updated date. It is your responsibility to review them periodically. Continued use after updates implies acceptance.
+          <p className="mt-4">
+            You may read, share, and link to our content freely (we appreciate
+            it!). However, you may <strong>not</strong> republish, sell, or
+            claim our content as your own without written permission.
           </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">9. Contact Us</h2>
-          <p className="leading-relaxed">
-            Questions about these Terms? Reach out to us at{" "}
-            <a href="mailto:contact@pankri.com" className="text-blue-600 hover:underline">
-              contact@pankri.com
-            </a>{" "}
-            or via our{" "}
-            <a href="/contact" className="text-blue-600 hover:underline">
-              Contact page
+          <p className="mt-4">
+            For collaboration, republishing, or licensing inquiries, contact us
+            at{" "}
+            <a
+              href="mailto:hello@pankri.com"
+              className="text-emerald-600 font-medium hover:underline"
+            >
+              hello@pankri.com
             </a>
             .
           </p>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadowHard border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            4. User Responsibilities
+          </h2>
+          <p>You agree not to:</p>
+          <ul className="mt-4 space-y-2 text-base">
+            <li>• Copy or scrape large amounts of content automatically</li>
+            <li>• Use the site for commercial purposes without permission</li>
+            <li>• Attempt to hack, disrupt, or overload the website</li>
+            <li>
+              • Post harmful, illegal, or misleading content (if comments are
+              enabled)
+            </li>
+          </ul>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            5. Advertising & Third-Party Links
+          </h2>
+          <p>
+            We may display advertisements (via Google AdSense or similar) to
+            keep the site free.
+          </p>
+          <p className="mt-4">
+            We may also link to third-party tools, books, or services we
+            genuinely recommend. Some links may be affiliate links — meaning we
+            earn a small commission at no extra cost to you.
+          </p>
+          <p className="mt-4 font-medium text-gray-800">
+            We only recommend products we use or believe in. However, always do
+            your own research.
+          </p>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            6. Limitation of Liability
+          </h2>
+          <p>
+            PanKri Finance is provided “as is” with no warranties. We strive for
+            accuracy, but cannot guarantee that all information is complete,
+            current, or error-free.
+          </p>
+          <p className="mt-4">
+            To the fullest extent permitted by law, PanKri Finance and its owner
+            shall not be liable for any financial losses, damages, or
+            consequences resulting from your use of this website or reliance on
+            its content.
+          </p>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            7. Changes to These Terms
+          </h2>
+          <p>
+            We may update these Terms from time to time. Significant changes
+            will be announced on the site or via email (if you’ve contacted us).
+            Your continued use means you accept the updated terms.
+          </p>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            8. Contact Us
+          </h2>
+          <p className="text-base">
+            Have questions about these terms or anything else?
+          </p>
+          <div className="mt-4 space-y-2 font-medium">
+            <p>
+              Email:{" "}
+              <a
+                href="mailto:hello@pankri.com"
+                className="text-emerald-600 hover:underline"
+              >
+                hello@pankri.com
+              </a>
+            </p>
+            <p>
+              Visit:{" "}
+              <Link
+                href="/contact"
+                className="text-emerald-600 hover:underline"
+              >
+                Contact Page
+              </Link>
+            </p>
+          </div>
         </article>
       </section>
+
+      
     </main>
   );
 }

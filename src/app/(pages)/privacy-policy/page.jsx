@@ -1,161 +1,209 @@
+import Link from "next/link";
+
 export default function Privacy() {
+  const currentYear = new Date().getFullYear();
+  const lastUpdated = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
-    <main className="container mx-auto px-4 py-16">
-      {/* Page Header */}
-      <header className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+    <main className="container mx-auto px-4 py-16 lg:py-24 max-w-5xl">
+      {/* Header */}
+      <header className="text-center mb-16">
+        <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
           Privacy Policy
         </h1>
-        <p className="text-gray-600 text-base md:text-lg">
-          Your privacy is important to us. This page explains our practices regarding data collection, use, and protection.
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          Your trust is our top priority. This policy explains exactly how we collect, use, and protect your information — 
+          transparently and responsibly.
         </p>
       </header>
 
-      {/* Privacy Content */}
-      <section className="space-y-8 text-gray-700">
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">1. Introduction</h2>
-          <p className="leading-relaxed">
-            Welcome to PanKri[](https://pankri.com/), a blog focused on web development, coding tutorials, and tech insights. This Privacy Policy explains how we collect, use, share, and protect your information when you visit our site, interact with content, or view advertisements. We comply with applicable privacy laws, including the General Data Protection Regulation (GDPR) for EEA/UK users and the California Consumer Privacy Act (CCPA)/CalOPPA for California residents. By using our site, you consent to these practices.
+      {/* Content */}
+      <section className="prose prose-lg prose-emerald max-w-none space-y-12 text-gray-700">
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+          <p className="leading-relaxed text-base">
+            Welcome to <strong>PanKri Finance</strong> (<Link href="/" className="text-emerald-600 hover:underline font-medium">https://pankri.com</Link>), 
+            a personal finance and investing education platform created and operated by <strong>Pankaj KrishnaVanshaj</strong>.
+          </p>
+          <p className="mt-4">
+            We are committed to protecting your privacy and being fully transparent about what data we collect (very little), 
+            why we collect it, and how it’s used. This Privacy Policy applies to all visitors and users of our website.
+          </p>
+          <p className="mt-4 font-medium">
+            By using PanKri Finance, you agree to the practices described in this policy.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">2. Use of Google AdSense</h2>
-          <p className="leading-relaxed">
-            We use Google AdSense, a third-party advertising vendor, to display personalized ads on our site. Google uses cookies and similar technologies to serve ads based on your prior visits to our site and other sites on the Internet. This enables remarketing (e.g., showing ads for topics you've browsed) and targeted advertising in placements like sidebars, headers, or within content. Ads may be based on your general location, device type, and browsing history. Earnings from ads are generated through views or clicks.
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">2. Information We Collect</h2>
+          <p>We collect only what is necessary to deliver and improve our service:</p>
+          <ul className="mt-4 space-y-3 text-base">
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              <div>
+                <strong>Automatically collected (anonymous):</strong> Browser type, device information, approximate location (country-level), 
+                pages viewed, time spent, and referral source — via Google Analytics.
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              <div>
+                <strong>Advertising data:</strong> If ads are displayed (via Google AdSense), Google may use cookies to show relevant ads 
+                based on your past visits to this and other sites.
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              <div>
+                <strong>Voluntarily provided:</strong> Only your name and email if you contact us via the contact form.
+              </div>
+            </li>
+          </ul>
+          <p className="mt-6 font-semibold text-gray-800">
+            We do NOT collect sensitive personal information such as financial details, passwords, or identity documents.
           </p>
-          <p className="leading-relaxed mt-4">
-            You can opt out of personalized advertising by visiting the{" "}
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">3. How We Use Your Information</h2>
+          <ul className="space-y-3 text-base">
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              To improve content and user experience
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              To understand which topics readers find most helpful
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              To respond to your messages or inquiries
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-emerald-600 mt-1">→</span>
+              To display relevant (non-intrusive) ads that support free access to our content
+            </li>
+          </ul>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">4. Cookies & Tracking</h2>
+          <p>We use cookies only for:</p>
+          <ul className="mt-4 space-y-2">
+            <li>• Essential site functionality</li>
+            <li>• Google Analytics (anonymous usage stats)</li>
+            <li>• Google AdSense (personalized advertising, if enabled)</li>
+          </ul>
+          <p className="mt-6">
+            You can disable cookies in your browser at any time. You can also opt out of personalized ads here:
+          </p>
+          <div className="mt-4 flex flex-wrap gap-4">
             <a
-              href="https://adssettings.google.com/"
-              className="text-blue-600 hover:underline"
+              href="https://adssettings.google.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-emerald-600 font-medium hover:underline"
             >
               Google Ads Settings
-            </a>{" "}
-            page or managing your Google Account. For more on Google's practices, see their{" "}
+            </a>
+            <span>•</span>
             <a
-              href="https://policies.google.com/privacy"
-              className="text-blue-600 hover:underline"
+              href="https://optout.aboutads.info"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-emerald-600 font-medium hover:underline"
             >
-              Privacy Policy
+              AdChoices Opt-Out
             </a>
-            .
+          </div>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">5. Third-Party Services</h2>
+          <p>We use the following trusted services:</p>
+          <ul className="mt-4 space-y-3 text-base">
+            <li>
+              <strong>Google Analytics</strong> – Anonymous website traffic analysis
+            </li>
+            <li>
+              <strong>Google AdSense</strong> – Contextual and personalized advertising (when active)
+            </li>
+            <li>
+              <strong>VPS</strong> – Secure hosting and performance
+            </li>
+          </ul>
+          <p className="mt-4">
+            These partners have their own privacy policies and may place cookies. We do not control their data practices.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">3. Cookies and Tracking Technologies</h2>
-          <p className="leading-relaxed">
-            We and our third-party partners, including Google AdSense and ad networks, use cookies (small text files stored on your device) and similar technologies like web beacons to enhance your experience, analyze site traffic, and serve relevant ads. These include:
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">6. Data Security</h2>
+          <p>
+            We use industry-standard security measures including:
           </p>
-          <ul className="list-disc list-inside leading-relaxed mt-2 space-y-1">
-            <li><strong>First-party cookies:</strong> Set by us for site functionality (e.g., session management).</li>
-            <li><strong>Third-party cookies:</strong> Set by Google and ad networks for ad personalization, fraud prevention, and avoiding ad repetition. Cookies are placed when you visit pages with ad tags or click ads.</li>
+          <ul className="mt-4 space-y-2">
+            <li>• HTTPS encryption (SSL/TLS)</li>
+            <li>• Secure server infrastructure</li>
+            <li>• Limited access controls</li>
+            <li>• Regular security updates</li>
           </ul>
-          <p className="leading-relaxed mt-4">
-            You can manage or disable cookies via your browser settings (e.g., Chrome's cookie controls). For broader management, visit{" "}
-            <a
-              href="https://www.youronlinechoices.com/"
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Your Online Choices
-            </a>{" "}
-            or{" "}
-            <a
-              href="https://www.internetcookies.com/"
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Internet Cookies
+          <p className="mt-6">
+            While we take strong precautions, no online service can guarantee 100% security.
+          </p>
+        </article>
+
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">7. Your Rights</h2>
+          <p>You have full control:</p>
+          <ul className="mt-4 space-y-3 text-base">
+            <li>• Access any data we hold about you</li>
+            <li>• Request correction or deletion</li>
+            <li>• Opt out of personalized advertising</li>
+            <li>• Withdraw consent at any time</li>
+          </ul>
+          <p className="mt-6">
+            To exercise your rights, email us at{" "}
+            <a href="mailto:privacy@pankri.com" className="text-emerald-600 font-medium hover:underline">
+              privacy@pankri.com
             </a>
-            . Note: Disabling cookies may limit site features or ad relevance. For EEA/UK users, we use a cookie consent banner to obtain your affirmative consent before placing non-essential cookies.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">4. Data Collection</h2>
-          <p className="leading-relaxed">
-            We collect limited information to improve our services:
-          </p>
-          <ul className="list-disc list-inside leading-relaxed mt-2 space-y-1">
-            <li><strong>Automatically collected (non-personal):</strong> Browser type, operating system, IP address, device information, referring URLs, pages viewed, time spent, and general location (derived from IP).</li>
-            <li><strong>Via AdSense/third parties:</strong> Browsing history, search queries, and interaction data for ad personalization.</li>
-            <li><strong>Voluntarily provided:</strong> Contact details (e.g., email) via forms or messages.</li>
-          </ul>
-          <p className="leading-relaxed mt-4">
-            We do not collect sensitive personal data (e.g., health or financial info). For EEA/UK users, consent is obtained via our cookie banner before processing for ads.
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">8. No Children Under 16</h2>
+          <p>
+            PanKri Finance is not intended for children under 16 years of age. 
+            We do not knowingly collect personal information from children. 
+            If you are a parent and believe your child has provided us with information, please contact us immediately.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">5. Data Sharing</h2>
-          <p className="leading-relaxed">
-            We share non-personal data with Google AdSense and affiliated ad networks to serve and measure ads. This may include device info, IP addresses, and browsing data for targeted advertising and analytics. We do not sell your data. Third parties are contractually obligated to protect it under Google's policies. No sharing occurs without your consent where required by law.
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">9. Changes to This Policy</h2>
+          <p>
+            We may update this policy from time to time. Significant changes will be announced on our homepage 
+            or via email (if you’ve contacted us). Continued use of the site after changes constitutes acceptance.
           </p>
         </article>
 
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">6. Your Rights</h2>
-          <p className="leading-relaxed">
-            You have control over your data:
+        <article className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">10. Contact Us</h2>
+          <p className="text-base">
+            For any privacy questions, concerns, or data requests:
           </p>
-          <ul className="list-disc list-inside leading-relaxed mt-2 space-y-1">
-            <li><strong>Access, Rectify, Erase:</strong> Request details or updates to your data.</li>
-            <li><strong>Object/Withdraw Consent:</strong> Opt out of ad personalization via links above or contact us.</li>
-            <li><strong>CCPA Rights (CA residents):</strong> Know what data is collected, request deletion, or opt out of sales (none occur here).</li>
-            <li><strong>GDPR Rights (EEA/UK):</strong> Portability, restriction, or complaint to supervisory authorities.</li>
-          </ul>
-          <p className="leading-relaxed mt-4">
-            To exercise rights, email us (see Contact section). We respond within 30 days and retain consent records.
-          </p>
+          <div className="mt-4 space-y-2 font-medium">
+            <p>Email: <a href="mailto:privacy@pankri.com" className="text-emerald-600 hover:underline">privacy@pankri.com</a></p>
+            <p>Website: <Link href="/contact" className="text-emerald-600 hover:underline">Contact Page</Link></p>
+          </div>
         </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">7. Security</h2>
-          <p className="leading-relaxed">
-            We implement reasonable security measures (e.g., encryption, access controls) to protect data from unauthorized access or loss. However, no system is fully secure—please use strong passwords and avoid sharing sensitive info.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">8. Third-Party Links</h2>
-          <p className="leading-relaxed">
-            Our site may contain links to external websites. We are not responsible for their content or privacy practices. Please review their policies before interacting.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">9. Updates to This Policy</h2>
-          <p className="leading-relaxed">
-            We may update this policy to reflect changes in practices or laws. We'll notify you via site notice for material updates. Continued use constitutes acceptance.
-          </p>
-        </article>
-
-        <article>
-          <h2 className="text-2xl font-semibold mb-3">10. Contact Us</h2>
-          <p className="leading-relaxed">
-            For privacy questions, rights requests, or concerns, contact our Data Protection Officer at{" "}
-            <a
-              href="mailto:contact@pankri.com"
-              className="text-blue-600 hover:underline"
-            >
-              contact@pankri.com
-            </a>
-            .
-          </p>
-        </article>
-        <p className="text-gray-500 text-sm mt-8">
-          Last updated: {new Date().toLocaleDateString()}
-        </p>
       </section>
+
+     
     </main>
   );
 }

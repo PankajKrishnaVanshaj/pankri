@@ -1,50 +1,67 @@
-import { Twitter, Instagram, Linkedin, AtSign, Mail } from "lucide-react";
+import {
+  Mail,
+  Send,
+  Globe,
+  ShieldCheck,
+  MessageSquare,
+  AtSign,
+  Instagram,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Contact() {
   return (
-    <main className="container mx-auto px-4 py-16">
-      {/* Page Header */}
-      <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-          Contact Us
+    <main className="container mx-auto px-4 py-16 lg:py-24">
+      {/* Hero Header */}
+      <header className="text-center mb-16 lg:mb-20">
+        <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
+          Get in Touch with{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-700">
+            PanKri Finance
+          </span>
         </h1>
-        <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-          We'd love to hear from you! Whether it's feedback, collaboration ideas, or questions about our tutorials, reach out below. We aim to respond within 24-48 hours.
+        <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto font-medium">
+          Have questions about investing, personal finance, or our content?
+          We're here to help. Drop us a message — we respond within 24-48 hours.
         </p>
       </header>
 
-      <div className="grid lg:grid-cols-2 gap-12">
+      {/* Main Grid */}
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
         {/* Contact Form */}
-        <section className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Send a Message</h2>
-          <p className="text-gray-600 mb-8">
-            Fill out the form, and we'll get back to you soon.
+        <section className="bg-white p-8 lg:p-10 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+            <Send className="w-8 h-8 text-emerald-600" />
+            Send Us a Message
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Share your thoughts, ask for advice, or suggest topics. We're all
+            ears.
           </p>
 
-          <form className="space-y-6" action="#" method="POST"> {/* Replace with your form handler */}
+          <form className="space-y-6" action="#" method="POST">
+            {" "}
+            {/* Integrate your backend handler */}
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-semibold text-gray-700 mb-2"
               >
-                Full Name <span className="text-red-500">*</span>
+                Your Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Your Full Name"
-                aria-describedby="name-error"
+                placeholder="John Doe"
+                className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
             </div>
-
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-semibold text-gray-700 mb-2"
               >
                 Email Address <span className="text-red-500">*</span>
               </label>
@@ -53,16 +70,14 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="your@email.com"
-                aria-describedby="email-error"
+                placeholder="you@example.com"
+                className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
             </div>
-
             <div>
               <label
                 htmlFor="subject"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-semibold text-gray-700 mb-2"
               >
                 Subject <span className="text-red-500">*</span>
               </label>
@@ -71,106 +86,121 @@ export default function Contact() {
                 id="subject"
                 name="subject"
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="e.g., Collaboration Inquiry"
+                placeholder="E.g., Question about Investing Basics"
+                className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
             </div>
-
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-semibold text-gray-700 mb-2"
               >
-                Message <span className="text-red-500">*</span>
+                Your Message <span className="text-red-500">*</span>
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={5}
+                rows={6}
                 required
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
-                placeholder="Tell us more about your inquiry..."
-                aria-describedby="message-error"
+                placeholder="Tell us what's on your mind..."
+                className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-vertical transition"
               />
             </div>
-
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full bg-gradient-to-r from-emerald-600 to-blue-700 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-xl hover:brightness-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             >
               Send Message
             </button>
           </form>
 
-          {/* Success/Error placeholders - handle via JS */}
-          <div id="form-status" className="mt-4 hidden">
-            <p className="text-green-600">Message sent successfully! We'll reply soon.</p>
-            <p className="text-red-600 hidden">There was an error. Please try again.</p>
+          {/* Placeholder for form status (handle with JS/state) */}
+          <div id="form-status" className="mt-6 hidden">
+            <p className="text-emerald-600 font-medium">
+              Message sent! We'll get back to you soon.
+            </p>
+            <p className="text-red-600 font-medium hidden">
+              Oops, something went wrong. Please try again.
+            </p>
           </div>
         </section>
 
         {/* Contact Info & Socials */}
-        <aside className="flex flex-col justify-between bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>
-            <div className="space-y-4">
-              <p className="text-gray-700 flex items-center">
-                <Mail className="w-5 h-5 text-gray-500 mr-3" />
+        <aside className="bg-gradient-to-br from-gray-50 to-white p-8 lg:p-10 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+              <Mail className="w-8 h-8 text-blue-600" />
+              Contact Details
+            </h2>
+            <div className="space-y-6">
+              <p className="text-lg text-gray-700 flex items-center gap-3">
+                <Globe className="w-6 h-6 text-emerald-600" />
+                <span>Global Community — We're here for you worldwide</span>
+              </p>
+              <p className="text-lg text-gray-700 flex items-center gap-3">
+                <MessageSquare className="w-6 h-6 text-blue-600" />
                 <a
                   href="mailto:pankajyadav91224@gmail.com"
-                  className="font-medium text-blue-600 hover:underline"
+                  className="text-emerald-700 font-semibold hover:underline"
                 >
                   pankajyadav91224@gmail.com
                 </a>
               </p>
-              <p className="text-gray-700 flex items-center">
-                <span className="font-medium mr-3">Location:</span>
-                Mainpuri, Uttar Pradesh, India
-              </p>
             </div>
-            <p className="text-sm text-gray-500 mt-4">
-              For privacy concerns, see our{" "}
-              <Link href="/privacy" className="text-blue-600 hover:underline">
+            <p className="text-sm text-gray-500">
+              Your privacy matters. See our{" "}
+              <Link
+                href="/privacy-policy"
+                className="text-emerald-600 hover:underline font-medium"
+              >
                 Privacy Policy
-              </Link>
-              .
+              </Link>{" "}
+              for details.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Connect on social media for updates and tips.
+          <div className="mt-10">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+              <ShieldCheck className="w-7 h-7 text-emerald-600" />
+              Stay Connected
+            </h3>
+            <p className="text-lg text-gray-600 mb-6">
+              Follow for daily finance tips, market updates, and more.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="https://www.threads.net/@pankri_official"
-                className="p-2 hover:scale-110 transition transform rounded-lg bg-white shadow-sm hover:shadow-md"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Threads"
+                className="p-3 bg-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <AtSign className="w-6 h-6 text-gray-700 hover:text-purple-500" />
+                <AtSign className="w-6 h-6 text-gray-700 hover:text-purple-600" />
               </a>
               <a
                 href="https://x.com/Pankri_official"
-                className="p-2 hover:scale-110 transition transform rounded-lg bg-white shadow-sm hover:shadow-md"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (Twitter)"
+                className="p-3 bg-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <Twitter className="w-6 h-6 text-gray-700 hover:text-blue-400" />
+                <svg
+                  className="w-6 h-6 text-gray-700 hover:text-blue-600"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
               <a
                 href="https://www.instagram.com/pankri_official"
-                className="p-2 hover:scale-110 transition transform rounded-lg bg-white shadow-sm hover:shadow-md"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
+                className="p-3 bg-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <Instagram className="w-6 h-6 text-gray-700 hover:text-pink-500" />
+                <Instagram className="w-6 h-6 text-gray-700 hover:text-pink-600" />
               </a>
-             
             </div>
           </div>
         </aside>

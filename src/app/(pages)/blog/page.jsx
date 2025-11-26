@@ -10,7 +10,7 @@ const blogJsonLd = {
   name: "PanKri Blog",
   url: "https://pankri.com/blog",
   description:
-    "The PanKri Blog features tutorials, insights, and creativity on Next.js, React, Tailwind CSS, and web development.",
+    "Smart personal finance, investing strategies, stock market insights, budgeting tips, and wealth-building advice for beginners and professionals.",
   publisher: {
     "@type": "Organization",
     name: "PanKri",
@@ -23,9 +23,9 @@ const blogJsonLd = {
 };
 
 export const metadata = {
-  title: "Blog - PanKri | Tech, Coding & Creativity Articles",
+  title: "PanKri - Personal Finance, Investing & Money Tips",
   description:
-    "Explore the latest blog posts on PanKri. Discover insights, tutorials, and stories about Next.js, React, Tailwind CSS, and modern web development.",
+    "Master your money with PanKri Finance. Get practical personal finance advice, stock market analysis, investment strategies, budgeting guides, passive income ideas, and financial freedom tips.",
 };
 
 export default async function Blog() {
